@@ -4,11 +4,12 @@ import styled, { css } from "styled-components"
 import InstagramIcon from "../assets/instagram.svg"
 import LinkedinIcon from "../assets/linkedin.svg"
 import SpotifyIcon from "../assets/spotify.svg"
-import { ThemeToggler } from "gatsby-plugin-dark-mode"
+import { func, string } from "prop-types"
 
 const Container = styled.div`
-  color: white;
-  background-color: #0f0f0ff2;
+  color: ${({ theme }) => theme.textHeader};
+  background-color: ${({ theme }) => theme.backgroundHeader};
+  transition: all 0.3s ease-in-out;
 `
 
 const HeaderContainer = styled.div`
@@ -38,6 +39,8 @@ const DivRow = styled.div`
 
 const Title = styled.a`
   padding: 10px 10px;
+  color: ${({ theme }) => theme.textHeader};
+  
   &:hover {
     color: rgb(161, 236, 247);
     border-color: rgb(161, 236, 247);
@@ -89,7 +92,6 @@ const DarkModeDiv = styled.label`
     right: 0;
     bottom: 0;
     background-color: #4d4c4c;
-    background-image: url(${InstagramIcon});
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 40px;
@@ -109,9 +111,8 @@ const DarkModeDiv = styled.label`
   }
 
   > input:checked + span {
-    
+    background-color: #707070;
   }
-
 
   > input:checked + span:before {
     -webkit-transform: translateX(17px);
@@ -120,12 +121,14 @@ const DarkModeDiv = styled.label`
     background-color: transparent;
     box-shadow: inset -7px -1px 0 1px #63d8c6;
   }
-
-
 `
 
+export default function Header({ theme, toggleTheme }) {
+  Header.propTypes = {
+    theme: string.isRequired,
+    toogleTheme: func.isRequired,
+  }
 
-export default function Header() {
   return (
     <Container>
       <HeaderContainer>
@@ -152,20 +155,16 @@ export default function Header() {
           <a href="https://open.spotify.com/playlist/2pwLNddOouJITrbFWG82Kw">
             <SpotIcon />
           </a>
-          <ThemeToggler>
-            {({ theme, toggleTheme }) => (
-              <DarkModeDiv>
+          <DarkModeDiv>
                 <input
                   type="checkbox"
-                  onChange={e =>
-                    toggleTheme(e.target.checked ? "dark" : "light")
+                  onChange={
+                    toggleTheme
                   }
                   checked={theme === "dark"}
                 />{" "}
                 <span></span>
               </DarkModeDiv>
-            )}
-          </ThemeToggler>
         </DivRow>
       </HeaderContainer>
     </Container>
