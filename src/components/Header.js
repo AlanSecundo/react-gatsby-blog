@@ -46,8 +46,8 @@ const Title = styled.a`
 `
 
 const SvgStyle = css`
-  width: 35px;
-  height: 35px;
+  width: 28px;
+  height: 28px;
   fill: black;
   margin: 0px 3px 0px 3px;
   transition: all 0.2s ease-in-out;
@@ -67,69 +67,63 @@ const SpotIcon = styled(SpotifyIcon)`
 
 // TOOGLE CSS
 
-const DarkModeDiv = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: -3px;
+const DarkModeDiv = styled.label`
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 28px;
+  top: -2px;
+  left: 3px;
 
-  &:before,
-  &:after {
-    box-sizing: border-box;
+  > input {
+    opacity: 0;
+    width: 0;
+    height: 0;
   }
 
-  > label {
-    position: relative;
-    display: block;
-    width: 45px;
-    height: 25px;
-    border-radius: 100px;
-    background-color: rgb(37, 37, 37);
-    overflow: hidden;
+  > span {
+    position: absolute;
     cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #4d4c4c;
+    background-image: url(${InstagramIcon});
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 40px;
 
-    &:before,
-    &:after {
-      display: block;
+    :before {
       position: absolute;
       content: "";
-      width: 19px;
-      height: 19px;
-      border-radius: 50%;
-      top: 3px;
-      left: 3px;
-      transition: 0.5s ease;
-    }
-
-    &:before {
-      background-color: rgb(241, 110, 101);
-    }
-
-    &:after {
-      background-color: rgb(37, 37, 37);
-      left: -58px;
-      transform: scale(0.00001);
-    }
-
-    > input {
-      display: none;
-
-      &:checked + label {
-        &:before {
-          background-color: rgb(1, 219, 198);
-          transform: translateX(20px);
-        }
-
-        &:after {
-          transform: translateX(75px) scale(1);
-        }
-      }
+      height: 20px;
+      width: 20px;
+      left: 6px;
+      bottom: 4px;
+      background-color: #f3d076;
+      border-radius: 40px;
+      -webkit-transition: 0.3s;
+      transition: 0.3s;
     }
   }
+
+  > input:checked + span {
+    
+  }
+
+
+  > input:checked + span:before {
+    -webkit-transform: translateX(17px);
+    -ms-transform: translateX(17px);
+    transform: translateX(17px);
+    background-color: transparent;
+    box-shadow: inset -7px -1px 0 1px #63d8c6;
+  }
+
+
 `
 
-const DarkThemeLabel = styled.label``
 
 export default function Header() {
   return (
@@ -168,7 +162,7 @@ export default function Header() {
                   }
                   checked={theme === "dark"}
                 />{" "}
-                <DarkThemeLabel></DarkThemeLabel>
+                <span></span>
               </DarkModeDiv>
             )}
           </ThemeToggler>
