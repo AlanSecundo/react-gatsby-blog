@@ -1,5 +1,6 @@
 import React from "react"
-import profileImage from "../assets/fotoAlan.png"
+// import profileImage from "../assets/fotoAlan.png"
+import logoWhiteMode from "../assets/logo-white-mode.png"
 import styled, { css } from "styled-components"
 import InstagramIcon from "../assets/instagram.svg"
 import LinkedinIcon from "../assets/linkedin.svg"
@@ -10,6 +11,8 @@ const Container = styled.div`
   color: ${({ theme }) => theme.textHeader};
   background-color: ${({ theme }) => theme.backgroundHeader};
   transition: all 0.3s ease-in-out;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 700;
 `
 
 const HeaderContainer = styled.div`
@@ -22,11 +25,15 @@ const HeaderContainer = styled.div`
   max-width: 1080px;
   padding-top: 10px;
   padding-bottom: 10px;
+
+  @media(max-width: 800px) {
+    flex-direction: column;
+  }
 `
 
 const Avatar = styled.img`
   border-radius: 500px;
-  max-width: 48px;
+  max-width: 80px;
   margin: 0px 10px 0px 10px;
 `
 
@@ -35,6 +42,11 @@ const DivRow = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  color: ${({ theme }) => theme.textHeader};
+
+  @media(max-width: 800px) {
+    margin-top: 1rem;
+  }
 `
 
 const Title = styled.a`
@@ -43,8 +55,7 @@ const Title = styled.a`
   
   &:hover {
     color: rgb(161, 236, 247);
-    border-color: rgb(161, 236, 247);
-    border-bottom: 2px solid;
+    border-bottom: 2px solid rgb(161, 236, 247);
   }
 `
 
@@ -134,11 +145,10 @@ export default function Header({ theme, toggleTheme }) {
       <HeaderContainer>
         <DivRow>
           <Avatar
-            src={profileImage}
+            src={logoWhiteMode}
             alt="Homem loiro com óculos de pé e segurando um mifrofone."
             title="Foto de perfil do Autor da página"
           />
-          <h3>Alan Secundo</h3>
         </DivRow>
         <div>
           <Title href="/">Hello :)</Title>
