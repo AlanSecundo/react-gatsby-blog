@@ -22,6 +22,10 @@ export default function Home() {
         <Helmet>
           <html lang="en" />
           <meta charSet="utf-8" />
+          <meta
+            name="description"
+            content="Um blog sobre tecnologias como React e Gatsby feitas para outros desenvolvedores aprenderem. Além disso, também acompanha uma página pessoal sobre mim"
+          />
           <title>React Blog Alan Secundo</title>
         </Helmet>
         <Header theme={theme} toggleTheme={toggleTheme} />
