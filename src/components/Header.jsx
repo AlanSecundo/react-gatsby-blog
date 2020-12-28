@@ -36,6 +36,7 @@ const DivRow = styled.div`
   justify-content: center;
   align-items: center;
   color: ${({ theme }) => theme.textHeader};
+  min-height: 5rem;
 
   @media (max-width: 800px) {
     margin-top: 1rem;
