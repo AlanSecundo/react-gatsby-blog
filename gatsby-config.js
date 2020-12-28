@@ -14,7 +14,6 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: `/sitemap.xml`,
-        // The example below will exclude the single `path/to/page` and all routes beginning with `category`
         query: `
           {
             site {
@@ -46,7 +45,15 @@ module.exports = {
       options: {
         host: 'https://alansecundosite.gtsb.io/',
         sitemap: 'https://alansecundosite.gtsb.io/sitemap.xml',
-        policy: [{ userAgent: '*', allow: '/' }]
+        policy: [{ userAgent: '*', allow: '/' }],
+        env: {
+          development: {
+            policy: [{ userAgent: '*', disallow: ['/'] }]
+          },
+          production: {
+            policy: [{ userAgent: '*', allow: '/' }]
+          }
+        }
       }
     },
     {

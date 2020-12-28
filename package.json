@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "name": "React Blog",
+  "private": false,
+  "description": "Um site pessoal e um blog sobre Desenvolivimento Web e React ",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
