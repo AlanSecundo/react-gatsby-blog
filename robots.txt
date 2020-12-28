@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://alansecundosite.gtsb.io/sitemap.xml
+Host: https://alansecundosite.gtsb.io
