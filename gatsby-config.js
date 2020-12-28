@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://alansecundosite.gtsb.io/'
+    siteUrl: "https://alansecundosite.gtsb.io/",
   },
   plugins: [
     `gatsby-transformer-sharp`,
@@ -9,7 +9,22 @@ module.exports = {
     `gatsby-plugin-layout`,
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-modal-routing`,
-    `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-plugin-next-seo",
+      options: {
+        openGraph: {
+          type: "website",
+          locale: "en_IE",
+          url: "https://alansecundosite.gtsb.io/",
+          site_name: "React Blog | Alan Secundo",
+        },
+        twitter: {
+          handle: "@alan.secundo",
+          site: "@alan.secundo",
+          cardType: "summary_large_image",
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
@@ -27,7 +42,7 @@ module.exports = {
               }
             }
         }`,
-        resolveSiteUrl: ({site}) => {
+        resolveSiteUrl: ({ site }) => {
           return site.siteMetadata.siteUrl
         },
         serialize: ({ site, allSitePage }) =>
@@ -37,24 +52,16 @@ module.exports = {
               changefreq: `weekly`,
               priority: 0.5,
             }
-          })
-      }
+          }),
+      },
     },
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: 'https://alansecundosite.gtsb.io/',
-        sitemap: 'https://alansecundosite.gtsb.io/sitemap.xml',
-        policy: [{ userAgent: '*', allow: '/' }],
-        env: {
-          development: {
-            policy: [{ userAgent: '*', allow: '/' }]
-          },
-          production: {
-            policy: [{ userAgent: '*', allow: '/' }]
-          }
-        }
-      }
+        host: "https://alansecundosite.gtsb.io/",
+        sitemap: "https://alansecundosite.gtsb.io/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
     },
     {
       resolve: "gatsby-plugin-react-svg",
@@ -62,18 +69,6 @@ module.exports = {
         rule: {
           include: /\.svg$/,
         },
-      },
-    },
-    {
-      resolve: `gatsby-plugin-gatsby-cloud`,
-      options: {
-        headers: {}, // option to add more headers. `Link` headers are transformed by the below criteria
-        allPageHeaders: [], // option to add headers for all pages. `Link` headers are transformed by the below criteria
-        mergeSecurityHeaders: true, // boolean to turn off the default security headers
-        mergeLinkHeaders: false, // boolean to turn off the default gatsby js headers
-        mergeCachingHeaders: true, // boolean to turn off the default caching headers
-        transformHeaders: (headers, path) => headers, // optional transform for manipulating headers under each path (e.g.sorting), etc.
-        generateMatchPathRewrites: true,
       },
     },
   ],
