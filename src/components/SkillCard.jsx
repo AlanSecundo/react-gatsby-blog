@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import styled, { css } from "styled-components"
 
 const Column = styled.div`
@@ -6,12 +6,13 @@ const Column = styled.div`
   align-items: center;
   flex-direction: column;
   text-align: center;
-  border-bottom: 0px solid #e6ecf8;
-  border-right: 1px solid #e6ecf8;
+  border-bottom: 0px solid ${({ theme }) => theme.borderTheme};
+  border-right: 1px solid ${({ theme }) => theme.borderTheme};
   padding: 2rem;
 
   @media (max-width: 800px) {
     flex-direction: column;
+    border-bottom: 1px solid ${({ theme }) => theme.borderTheme};
   }
 `
 const IconStyle = css`
@@ -36,7 +37,7 @@ const PurpleP = styled.p`
   font-weight: 400;
 `
 
-export default function SkillCard({SkillList }) {
+export default function SkillCard({ SkillList }) {
   const IconStyled = styled(SkillList.icon)`
     ${IconStyle}
   `

@@ -4,13 +4,19 @@ export const lightTheme = {
   text: "#141c3a",
   backgroundHeader: "#ffffff",
   textHeader: "#141c3a",
-  borderTheme: "#E6ECF8"
-}
+  borderTheme: "#E6ECF8",
+  purple: "#7510f7",
+  textWhite: "#ffffff",
+  darkBlue: "#141c3a"
+};
 
 export const darkTheme = {
   body: "#1d1d1d",
   text: "rgba(255,255,255,0.9)",
   backgroundHeader: "#0f0f0f",
   textHeader: "#ffffffe6",
-  borderTheme: "#31333380"
-}
+  borderTheme: "#31333380",
+  purple: "#7510f7",
+  textWhite: "#ffffff",
+  darkBlue: "#141c3a"
+};

@@ -1,17 +1,16 @@
 import React from "react"
-// import profileImage from "../assets/fotoAlan.png"
-import logoWhiteMode from "../assets/logo-white-mode.png"
 import styled, { css } from "styled-components"
 import InstagramIcon from "../assets/instagram.svg"
 import LinkedinIcon from "../assets/linkedin.svg"
 import SpotifyIcon from "../assets/spotify.svg"
 import { func, string } from "prop-types"
+import Logo from "./Logo"
 
 const Container = styled.div`
   color: ${({ theme }) => theme.textHeader};
   background-color: ${({ theme }) => theme.backgroundHeader};
   transition: all 0.3s ease-in-out;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   font-weight: 700;
 `
 
@@ -26,15 +25,9 @@ const HeaderContainer = styled.div`
   padding-top: 10px;
   padding-bottom: 10px;
 
-  @media(max-width: 800px) {
+  @media (max-width: 800px) {
     flex-direction: column;
   }
-`
-
-const Avatar = styled.img`
-  border-radius: 500px;
-  max-width: 80px;
-  margin: 0px 10px 0px 10px;
 `
 
 const DivRow = styled.div`
@@ -44,7 +37,7 @@ const DivRow = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.textHeader};
 
-  @media(max-width: 800px) {
+  @media (max-width: 800px) {
     margin-top: 1rem;
   }
 `
@@ -52,10 +45,10 @@ const DivRow = styled.div`
 const Title = styled.a`
   padding: 10px 10px;
   color: ${({ theme }) => theme.textHeader};
-  
+
   &:hover {
-    color: rgb(161, 236, 247);
-    border-bottom: 2px solid rgb(161, 236, 247);
+    color: ${({theme}) => theme.purple};
+    border-bottom: 2px solid ${({theme}) => theme.purple};
   }
 `
 
@@ -65,7 +58,8 @@ const SvgStyle = css`
   fill: black;
   margin: 0px 3px 0px 3px;
   transition: all 0.2s ease-in-out;
-  &:hover {
+
+  :hover {
     transform: scale(1.2);
   }
 `
@@ -102,7 +96,7 @@ const DarkModeDiv = styled.label`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #4d4c4c;
+    background-color: ${({ theme }) => theme.purple };
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 40px;
@@ -114,7 +108,7 @@ const DarkModeDiv = styled.label`
       width: 20px;
       left: 6px;
       bottom: 4px;
-      background-color: #f3d076;
+      background-color: ${({ theme }) => theme.textWhite };
       border-radius: 40px;
       -webkit-transition: 0.3s;
       transition: 0.3s;
@@ -122,7 +116,7 @@ const DarkModeDiv = styled.label`
   }
 
   > input:checked + span {
-    background-color: #707070;
+    background-color: ${({ theme }) => theme.textWhite};
   }
 
   > input:checked + span:before {
@@ -130,7 +124,7 @@ const DarkModeDiv = styled.label`
     -ms-transform: translateX(17px);
     transform: translateX(17px);
     background-color: transparent;
-    box-shadow: inset -7px -1px 0 1px #63d8c6;
+    box-shadow: inset -7px -1px 0 1px ${({ theme }) => theme.purple};
   }
 `
 
@@ -144,11 +138,7 @@ export default function Header({ theme, toggleTheme }) {
     <Container>
       <HeaderContainer>
         <DivRow>
-          <Avatar
-            src={logoWhiteMode}
-            alt="Homem loiro com óculos de pé e segurando um mifrofone."
-            title="Foto de perfil do Autor da página"
-          />
+          <Logo logoType={ theme === "dark" ? "white" : "purple" } size={80} />
         </DivRow>
         <div>
           <Title href="/">Hello :)</Title>
@@ -166,15 +156,13 @@ export default function Header({ theme, toggleTheme }) {
             <SpotIcon />
           </a>
           <DarkModeDiv>
-                <input
-                  type="checkbox"
-                  onChange={
-                    toggleTheme
-                  }
-                  checked={theme === "dark"}
-                />{" "}
-                <span></span>
-              </DarkModeDiv>
+            <input
+              type="checkbox"
+              onChange={toggleTheme}
+              checked={theme === "dark"}
+            />
+            <span></span>
+          </DarkModeDiv>
         </DivRow>
       </HeaderContainer>
     </Container>
