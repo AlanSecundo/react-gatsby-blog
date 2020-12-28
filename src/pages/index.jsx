@@ -26,7 +26,22 @@ export default function Home() {
             name="description"
             content="Um blog sobre tecnologias como React e Gatsby feitas para outros desenvolvedores aprenderem. Além disso, também acompanha uma página pessoal sobre mim"
           />
+          <link rel="canonical" href="https://alansecundosite.gtsb.io/" />
           <title>React Blog Alan Secundo</title>
+          <script type="application/ld+json">
+            {`
+              {
+                "@type": "Blog",
+                "url": "https://alansecundosite.gtsb.io/",
+                "name": "React Blog and Developer",
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "telephone": "+55-44-99957-6173",
+                  "contactType": "Personal Contact"
+                }
+              }
+            `}
+          </script>
         </Helmet>
         <Header theme={theme} toggleTheme={toggleTheme} />
         <Body theme={theme} />
