@@ -2,13 +2,14 @@ import React from "react"
 import styled from "styled-components"
 
 export default function Typography(props) {
+  
   Typography.propTypes = {
-    size: String.isRequired,
+    Memorie: Object.required,
   }
 
-  const Typography = styled.p`
+  const TypographyText = styled.p`
     font-size: ${props.size === 'small' ? 12 : props.size === 'medium' ? 16 : 20}px;
   `
 
-  return <Typography> {props.children} </Typography>
+  return <TypographyText> {props.children} </TypographyText>
 }
