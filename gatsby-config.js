@@ -6,6 +6,7 @@ module.exports = {
     `gatsby-plugin-layout`,
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-modal-routing`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-plugin-react-svg",
       options: {

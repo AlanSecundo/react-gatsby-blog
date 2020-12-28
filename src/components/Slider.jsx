@@ -84,7 +84,7 @@ export default function Slider({ List }) {
             <SocialProofContainer>
               {marked === index ? (
                 <div className="fade-in">
-                  <SocialProofAvatar src={list.profile} />
+                  <SocialProofAvatar src={list.profile} alt="Imagem do autor do feedback" />
                   <p>
                     <b>{list.name}</b>
                   </p>

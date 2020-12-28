@@ -18,7 +18,7 @@ export default function Logo({ logoType, size }) {
   return (
     <Avatar
       src={logoType === "purple" ? purpleLogo : greyLogo}
-      alt="Logotipo"
+      alt="Logotipo Alan React"
       title="Logotipo de empresa Alan Secundo"
     />
   )

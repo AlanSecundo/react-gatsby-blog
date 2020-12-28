@@ -129,6 +129,17 @@ const DarkModeDiv = styled.label`
   }
 `
 
+const HiddeLabel = styled.label`
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+`
+
 export default function Header({ theme, toggleTheme }) {
   Header.propTypes = {
     theme: string.isRequired,
@@ -157,7 +168,9 @@ export default function Header({ theme, toggleTheme }) {
             <SpotIcon />
           </a>
           <DarkModeDiv>
+            <HiddeLabel htmlFor="slider">Slider modo noturno</HiddeLabel>
             <input
+              name="slider"
               type="checkbox"
               onChange={toggleTheme}
               checked={theme === "dark"}
