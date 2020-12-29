@@ -72,5 +72,14 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Alan Secundo Blog`,
+        short_name: `AlanReactBlog`,
+        start_url: `/`,
+        icon: `src/assets/logo-icon.png`
+      },
+    },
   ],
 }
