@@ -22,9 +22,7 @@ export default function Home() {
         <GatsbySeo
           title="React Blog | Alan Secundo"
           description="Um blog sobre tecnologias de Desenvolvimento Front-end e Engenharia de software. Scrum, React, Gatsby e muito mais."
-          canonical='https://alansecundosite.gtsb.io/'
-          noindex={false}
-          nofollow={false}
+          canonical='https://alansecundo.netlify.app/'
         />
         <Header theme={theme} toggleTheme={toggleTheme} />
         <Body theme={theme} />

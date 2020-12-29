@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/alanblog",
   siteMetadata: {
     siteUrl: "https://alansecundosite.gtsb.io/",
   },
