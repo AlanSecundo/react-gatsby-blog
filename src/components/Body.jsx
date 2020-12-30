@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import styled, { css } from "styled-components"
-// import { Link } from "gatsby-plugin-modal-routing"
+import { useIntl } from "gatsby-plugin-intl"
 
 // Lists
 
@@ -17,7 +17,6 @@ import Typography from "./Typography"
 import SkillCard from "./SkillCard"
 import MemoryCard from "./MemoryCard"
 import ModalContact from "./ModalContact"
-import ModalEasterEgg from "./ModalEasterEgg"
 
 // Assets
 import avataralan from "../assets/avataralan.svg"
@@ -189,28 +188,12 @@ const Button = styled.div`
   }
 `
 
-const EasterEggButton = styled.a`
-  cursor: pointer;
-  :hover {
-    text-decoration: underline;
-  }
-`
-
 export default function Body({ theme }) {
   Body.propTypes = {
     theme,
   }
 
   const [contactModalState, setContactModalState] = useState(false)
-  const [easterEggModalState, setEasterEggModalState] = useState(false)
-
-  function changeEasterEggModalState() {
-    if (easterEggModalState === true) {
-      setEasterEggModalState(false)
-    } else {
-      setEasterEggModalState(true)
-    }
-  }
 
   function changeModalState() {
     if (contactModalState === true) {
@@ -220,15 +203,14 @@ export default function Body({ theme }) {
     }
   }
 
+  const intl = useIntl()
+
   return (
     <MainContainer>
       <Container>
         <Article>
-          <H1>Dev Front-end e Engenheiro de Software</H1>
-          <span>
-            Em uma busca constante de aprendizado e experiências com alegria e
-            paixão no que eu faço
-          </span>
+          <H1>{intl.formatMessage({ id: "mainTitle" })}</H1>
+          <span>{intl.formatMessage({ id: "subtitle" })}</span>
           <div>
             <Avatar />
           </div>
@@ -236,18 +218,8 @@ export default function Body({ theme }) {
       </Container>
       <PurpleContainer>
         <Container>
-          <h2>Muito prazer ^^ Me chamo Alan Secundo</h2>
-          <p>
-            Meu primeiro contato com a área de Software foi em 2014, quando
-            ingressei no curso de Engenharia de Software. Durante a graduação,
-            fui professor de Excel, fiz iniciação científica, participei de
-            diversos Hackathons e voluntáriados. Consegui minha primeira
-            oportunidade no mercado de trabalho em 2017, desde então, atuei na
-            grande maioria do tempo como Desenvolvedor Front-End, mas também
-            como Gestor de Produtos e Scrum Master em alguns períodos. Em
-            relação a minha pessoa, gosto muito de comunicação, inovação,
-            autoconhecimento, desenvolvimento de software, e-sports e viagens.
-          </p>
+          <h2>{intl.formatMessage({ id: "secondaryTitle" })}</h2>
+          <p>{intl.formatMessage({ id: "personalText" })}</p>
         </Container>
         <WhiteDiv />
         <WhiteDiv />
@@ -260,7 +232,7 @@ export default function Body({ theme }) {
         </SkillsContainer>
       </Container>
       <Container>
-        <h2>Algumas conquistas relacionadas a área das quais me orgulho</h2>
+        <h2>{intl.formatMessage({ id: "personalSubtitle" })}</h2>
         <MemoryCardGrid>
           {cardList.map((memorie, index) => {
             return <MemoryCard Memorie={memorie} key={index} />
@@ -268,7 +240,7 @@ export default function Body({ theme }) {
         </MemoryCardGrid>
       </Container>
       <Container>
-        <h2>Empresas e instituições que tive orgulho de colaborar</h2>
+        <h2>{intl.formatMessage({ id: "companysTitle" })}</h2>
         <Line>
           {companyList.map((company, index) => (
             <LogoCompanys key={index} src={company.source} alt={company.alt} />
@@ -276,10 +248,8 @@ export default function Body({ theme }) {
         </Line>
       </Container>
       <Container>
-        <h2>Recomendações vindas do Linkedin</h2>
-        <p>
-          Algumas coisas legais que pessoas que trabalharam comigo já falaram
-        </p>
+        <h2>{intl.formatMessage({ id: "linkedinTitle" })}</h2>
+        <p>{intl.formatMessage({ id: "peopleSaid" })}</p>
         <Slider List={testimonials} />
         <WhiteDiv />
       </Container>
@@ -291,13 +261,10 @@ export default function Body({ theme }) {
                 <h2>Let's work Together</h2>
               </Column>
               <Column>
-                <p>
-                  Tem interesse em trabalharmos juntos? Fico a disposição para
-                  uma conversa.
-                </p>
+                <p>{intl.formatMessage({ id: "workTogether" })}</p>
               </Column>
               <Column>
-                <Button onClick={changeModalState}>Currículo e Contato </Button>
+                <Button onClick={changeModalState}>{intl.formatMessage({ id: "contactTitle" })}</Button>
                 <ModalContact
                   contactModalState={contactModalState}
                   closeModal={changeModalState}
@@ -310,23 +277,15 @@ export default function Body({ theme }) {
           <div>
             <Logo logoType="white" size={100} />
             <Typography size="medium">
-              Transformando cada novo desafio em oportunidades de aprendizado e
-              crescimento.
+              {intl.formatMessage({ id: "phrase" })}
             </Typography>
             <div>
               <Typography size="medium">
-                Saiba as tecnologias utilizadas neste projeto{" "}
-                <EasterEggButton onClick={changeEasterEggModalState}>
-                  clicando aqui
-                </EasterEggButton>
-                <ModalEasterEgg
-                  modalState={easterEggModalState}
-                  closeModal={changeEasterEggModalState}
-                />
+              {intl.formatMessage({ id: "technologys" })}
               </Typography>
             </div>
             <Typography size="small">
-              Desenvolvido por eu mesmo | Alan Secundo
+              {intl.formatMessage({ id: "developedByMe" })}
             </Typography>
           </div>
         </Container>

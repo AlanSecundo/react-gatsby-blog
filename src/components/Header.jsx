@@ -5,6 +5,7 @@ import LinkedinIcon from "../assets/linkedin.svg"
 import SpotifyIcon from "../assets/spotify.svg"
 import { func, string } from "prop-types"
 import Logo from "./Logo"
+import { useIntl } from "gatsby-plugin-intl"
 
 const Container = styled.div`
   color: ${({ theme }) => theme.textHeader};
@@ -141,10 +142,13 @@ const HiddeLabel = styled.label`
 `
 
 export default function Header({ theme, toggleTheme }) {
+
   Header.propTypes = {
     theme: string.isRequired,
     toogleTheme: func.isRequired,
   }
+  
+  const intl = useIntl();
 
   return (
     <Container>
@@ -153,9 +157,9 @@ export default function Header({ theme, toggleTheme }) {
           <Logo logoType={ theme === "dark" ? "white" : "purple" } size={80} />
         </DivRow>
         <div>
-          <Title href="/">Hello :)</Title>
+          <Title href="/">{intl.formatMessage({ id: "hello" })}</Title>
           <span>|</span>
-          <Title href="/blog">The Amazing Blog</Title>
+          <Title href="/blog">{intl.formatMessage({ id: "section" })}</Title>
         </div>
         <DivRow>
           <a href="https://www.instagram.com/alan.secundo/">

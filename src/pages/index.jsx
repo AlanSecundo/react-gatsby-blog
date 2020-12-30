@@ -18,15 +18,15 @@ export default function Home() {
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      <GlobalDiv>
-        <GatsbySeo
-          title="React Blog | Alan Secundo"
-          description="Um blog sobre tecnologias de Desenvolvimento Front-end e Engenharia de software. Scrum, React, Gatsby e muito mais."
-          canonical='https://alansecundo.netlify.app/'
-        />
-        <Header theme={theme} toggleTheme={toggleTheme} />
-        <Body theme={theme} />
-      </GlobalDiv>
+        <GlobalDiv>
+          <GatsbySeo
+            title="React Blog | Alan Secundo"
+            description="Um blog sobre tecnologias de Desenvolvimento Front-end e Engenharia de software. Scrum, React, Gatsby e muito mais."
+            canonical="https://alansecundo.netlify.app/"
+          />
+          <Header theme={theme} toggleTheme={toggleTheme} />
+          <Body theme={theme} />
+        </GlobalDiv>
     </ThemeProvider>
   )
 }

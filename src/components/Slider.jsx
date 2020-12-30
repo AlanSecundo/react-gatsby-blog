@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import Fade from "./Fade";
+import { useIntl } from "gatsby-plugin-intl"
 
 const SliderComponent = styled.div`
   display: flex;
@@ -76,6 +77,8 @@ export default function Slider({ List }) {
     setMarked(value)
   }
 
+  const intl = useIntl()
+
   return (
     <Container>
       <DivRow>
@@ -88,7 +91,7 @@ export default function Slider({ List }) {
                   <p>
                     <b>{list.name}</b>
                   </p>
-                  <Text>{list.text}</Text>
+                  <Text>{intl.formatMessage({ id: list.text })}</Text>
                 </div>
               ) : null}
             </SocialProofContainer>

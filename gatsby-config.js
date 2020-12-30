@@ -11,6 +11,15 @@ module.exports = {
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-modal-routing`,
     {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        path: `${__dirname}/src/intl`,
+        languages: [`pt`, `en`],
+        defaultLanguage: `pt`,
+        redirect: false,
+      },
+    },
+    {
       resolve: "gatsby-plugin-next-seo",
       options: {
         openGraph: {

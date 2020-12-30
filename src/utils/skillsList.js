@@ -6,9 +6,8 @@ export const skillList = [
   {
     icon: devIcon,
     title: "Front-end",
-    text:
-      "Durante minha carreira e projetos pessoais, essas foram as tecnologias relacionadas a front-end que eu me relacionei.",
-    subtitle: "Tecnologias:",
+    text: "devSkillText",
+    subtitle: "tech",
     list: [
       "HTML5",
       "CSS, SCSS & Styled Components",
@@ -22,10 +21,10 @@ export const skillList = [
   },
   {
     icon: scrumIcon,
-    title: "Projetos de Software",
+    title: "softwareProject",
     text:
-      "Na graduação, vida profissional e empreendedora, essas são as metodologias que eu trabalhei e me relacionei.",
-    subtitle: "Metodologias:",
+      "projectsText",
+    subtitle: "methodologies",
     list: [
       "Scrum",
       "Kanban",
@@ -35,14 +34,14 @@ export const skillList = [
   },
   {
     icon: skillsIcon,
-    title: "Conhecimentos úteis",
+    title: "knowledge",
     text:
-      "Estes são outros conhecimentos que coleciono, alguns com mais amor, outros com menos, mas todos extremamente úteis.",
-    subtitle: "Conhecimentos úteis:",
+      "knowledgeText",
+    subtitle: "knowledge",
     list: [
       "SQL",
       "GIT & Git Flow",
-      "Orientação a Objetos",
+      "Object Orientation (OO)",
       "GraphQL",
       "API Rest",
       "Design System",

@@ -1,5 +1,6 @@
 import React from "react"
 import styled, { css } from "styled-components"
+import { useIntl } from "gatsby-plugin-intl"
 
 const Column = styled.div`
   display: flex;
@@ -46,16 +47,16 @@ export default function SkillCard({ SkillList }) {
     SkillList: Object.isRequired,
   }
 
+  const intl = useIntl()
+
   return (
     <Column>
       <IconStyled />
       <p>
-        <b>{SkillList.title}</b>
+        <b>{intl.formatMessage({ id: SkillList.title })}</b>
       </p>
-      <p>
-        {SkillList.text}
-      </p>
-      <PurpleP>{SkillList.subtitle}</PurpleP>
+      <p>{intl.formatMessage({ id: SkillList.text })}</p>
+      <PurpleP>{intl.formatMessage({ id: SkillList.subtitle })}</PurpleP>
       <List>
         {SkillList.list.map((skill, index) => {
           return <span key={index}>{skill}</span>

@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { useIntl } from "gatsby-plugin-intl"
 
 const Layer = styled.div`
   border-radius: 10px;
@@ -22,7 +23,6 @@ const Layer = styled.div`
       display: none;
     }
   }
-
 `
 
 const TextContainer = styled.div`
@@ -45,11 +45,13 @@ export default function MemoryCard({ Memorie }) {
     position: relative;
   `
 
+  const intl = useIntl()
+
   return (
     <MainDiv>
       <Layer>
         <TextContainer>
-          <span>{Memorie.title}</span>
+          <span>{intl.formatMessage({ id: Memorie.title })}</span>
           <span>
             <b>{Memorie.year}</b>
           </span>
