@@ -179,13 +179,13 @@ export default function Header({ theme, toggleTheme }) {
 
   function isLanguageBR() {
     if (typeof window === "undefined") {
-      let url = window.location.href
-      if (url.indexOf("/en") > -1) {
-        return false
-      }
       return true
     }
-    return true;
+    let url = window.location.href
+    if (url.indexOf("/en") > -1) {
+      return false
+    }
+    return true
   }
 
   return (
