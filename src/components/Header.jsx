@@ -6,6 +6,9 @@ import SpotifyIcon from "../assets/spotify.svg"
 import { func, string } from "prop-types"
 import Logo from "./Logo"
 import { useIntl } from "gatsby-plugin-intl"
+import { Link } from "gatsby"
+import BrazilIcon from "../assets/brazil.svg"
+import USAIcon from "../assets/united-states.svg"
 
 const Container = styled.div`
   color: ${({ theme }) => theme.textHeader};
@@ -22,7 +25,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1080px;
+  max-width: 1180px;
   padding-top: 10px;
   padding-bottom: 10px;
 
@@ -31,14 +34,17 @@ const HeaderContainer = styled.div`
   }
 `
 
-const DivRow = styled.div`
+const flexCenter = css`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+`
+
+const DivRow = styled.div`
   color: ${({ theme }) => theme.textHeader};
   min-height: 5rem;
-
+  ${flexCenter}
   @media (max-width: 800px) {
     margin-top: 1rem;
   }
@@ -49,29 +55,38 @@ const Title = styled.a`
   color: ${({ theme }) => theme.textHeader};
 
   &:hover {
-    color: ${({theme}) => theme.purple};
-    border-bottom: 2px solid ${({theme}) => theme.purple};
+    color: ${({ theme }) => theme.purple};
+    border-bottom: 2px solid ${({ theme }) => theme.purple};
   }
 `
-
+const SvgStyleHover = css`
+  transition: all 0.2s ease-in-out;
+  :hover {
+    transform: scale(1.2);
+  }
+`
 const SvgStyle = css`
   width: 28px;
   height: 28px;
   fill: black;
   margin: 0px 3px 0px 3px;
-  transition: all 0.2s ease-in-out;
-
-  :hover {
-    transform: scale(1.2);
-  }
 `
 const LinkedIcon = styled(LinkedinIcon)`
   ${SvgStyle}
+  ${SvgStyleHover}
 `
 const InstaIcon = styled(InstagramIcon)`
   ${SvgStyle}
+  ${SvgStyleHover}
 `
 const SpotIcon = styled(SpotifyIcon)`
+  ${SvgStyle}
+  ${SvgStyleHover}
+`
+const USIcon = styled(USAIcon)`
+  ${SvgStyle}
+`
+const BRIcon = styled(BrazilIcon)`
   ${SvgStyle}
 `
 
@@ -98,7 +113,7 @@ const DarkModeDiv = styled.label`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: ${({ theme }) => theme.purple };
+    background-color: ${({ theme }) => theme.purple};
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 40px;
@@ -110,7 +125,7 @@ const DarkModeDiv = styled.label`
       width: 20px;
       left: 6px;
       bottom: 4px;
-      background-color: ${({ theme }) => theme.textWhite };
+      background-color: ${({ theme }) => theme.textWhite};
       border-radius: 40px;
       -webkit-transition: 0.3s;
       transition: 0.3s;
@@ -140,21 +155,41 @@ const HiddeLabel = styled.label`
   position: absolute;
   width: 1px;
 `
+const ChangeLanguage = styled.div`
+  ${flexCenter}
+  cursor: pointer;
+  margin: 0 0 0 10px;
+  transition: all 0.2s ease-in-out;
+  :hover {
+    transform: scale(1.1);
+  }
+`
+
+const LinkCss = styled(Link)`
+  color: ${({ theme }) => theme.textHeader};
+`
 
 export default function Header({ theme, toggleTheme }) {
-
   Header.propTypes = {
     theme: string.isRequired,
     toogleTheme: func.isRequired,
   }
-  
-  const intl = useIntl();
+
+  const intl = useIntl()
+
+  function isLanguageBR() {
+    let url = window.location.href
+    if (url.indexOf("/en") > -1) {
+      return false
+    }
+    return true
+  }
 
   return (
     <Container>
       <HeaderContainer>
         <DivRow>
-          <Logo logoType={ theme === "dark" ? "white" : "purple" } size={80} />
+          <Logo logoType={theme === "dark" ? "white" : "purple"} size={80} />
         </DivRow>
         <div>
           <Title href="/">{intl.formatMessage({ id: "hello" })}</Title>
@@ -162,13 +197,16 @@ export default function Header({ theme, toggleTheme }) {
           <Title href="/blog">{intl.formatMessage({ id: "section" })}</Title>
         </div>
         <DivRow>
-          <a href="https://www.instagram.com/alan.secundo/">
+          <a href="https://www.instagram.com/alan.secundo/" target="blank">
             <InstaIcon />
           </a>
-          <a href="https://www.linkedin.com/in/alansecundo/">
+          <a href="https://www.linkedin.com/in/alansecundo/" target="blank">
             <LinkedIcon />
           </a>
-          <a href="https://open.spotify.com/playlist/2pwLNddOouJITrbFWG82Kw">
+          <a
+            href="https://open.spotify.com/playlist/2pwLNddOouJITrbFWG82Kw"
+            target="blank"
+          >
             <SpotIcon />
           </a>
           <DarkModeDiv>
@@ -181,6 +219,12 @@ export default function Header({ theme, toggleTheme }) {
             />
             <span></span>
           </DarkModeDiv>
+          <ChangeLanguage>
+            <LinkCss to={isLanguageBR() ? "/en" : "/"}>
+              <span>{intl.formatMessage({ id: "language" })}</span>
+            </LinkCss>
+            {isLanguageBR() ? <BRIcon /> : <USIcon />}
+          </ChangeLanguage>
         </DivRow>
       </HeaderContainer>
     </Container>

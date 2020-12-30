@@ -1,6 +1,6 @@
 {
-  "section": "Meus conteúdos sobre DEV",
-  "hello": "Olá :)",
+  "section": "Conteúdos sobre Software",
+  "hello": "Sobre mim :)",
   "mainTitle": "Dev Front-end e Engenheiro de Software",
   "subtitle": "Em uma busca constante de aprendizado e experiências com alegria e paixão no que eu faço",
   "secondaryTitle": "Muito prazer ^^ Me chamo Alan Secundo",
@@ -29,5 +29,6 @@
   "inovaAgro1": "1° Lugar Hackathon Inova Agro",
   "inovaAgro2": "2° Lugar Hackathon Inova Agro",
   "research": "Prêmio Melhor Iniciação Científica da área de Ciencias Exatas na Unicesumar",
-  "spaceApps": "Palestrante no Hackathon NASA SPACE Apps 2019"
+  "spaceApps": "Palestrante no Hackathon NASA SPACE Apps 2019",
+  "language": "PT-BR"
 }

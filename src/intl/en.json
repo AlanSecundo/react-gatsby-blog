@@ -1,6 +1,6 @@
 {
   "section": "The Amazing Blog",
-  "hello": "Hello :)",
+  "hello": "About me :)",
   "mainTitle": "Dev Front-end and Software Engineer",
   "subtitle": "In a constant search for learning and experiences with joy and passion in what I do",
   "secondaryTitle": "Nice to meet you ^^ My name is Alan Secundo",
@@ -29,5 +29,6 @@
   "inovaAgro1": "1st Place Hackathon Inova Agro",
   "inovaAgro2": "2nd Place Hackathon Inova Agro",
   "research": "Best Scientific Initiation Award in the Exact Sciences area at Unicesumar",
-  "spaceApps": "Welcome to the NASA SPACE Apps 2019 Hackathon"
+  "spaceApps": "Welcome to the NASA SPACE Apps 2019 Hackathon",
+  "language": "EN-US"
 }
