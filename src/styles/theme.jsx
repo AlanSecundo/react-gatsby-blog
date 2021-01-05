@@ -7,7 +7,10 @@ export const lightTheme = {
   borderTheme: "#E6ECF8",
   purple: "#7510f7",
   textWhite: "#ffffff",
-  darkBlue: "#141c3a"
+  darkBlue: "#141c3a",
+  grey: "#757575",
+  purpleSecondary: "#a972f0"
+  
 };
 
 export const darkTheme = {
@@ -16,7 +19,9 @@ export const darkTheme = {
   backgroundHeader: "#0f0f0f",
   textHeader: "#ffffffe6",
   borderTheme: "#31333380",
-  purple: "#7510f7",
+  purple: "#8c37fa",
   textWhite: "#ffffff",
-  darkBlue: "#141c3a"
+  darkBlue: "#141c3a",
+  grey: "#757575",
+  purpleSecondary: "#a972f0"
 };

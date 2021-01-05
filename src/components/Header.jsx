@@ -6,9 +6,10 @@ import SpotifyIcon from "../assets/spotify.svg"
 import { func, string } from "prop-types"
 import Logo from "./Logo"
 import { useIntl } from "gatsby-plugin-intl"
-import { Link } from "gatsby"
 import BrazilIcon from "../assets/brazil.svg"
 import USAIcon from "../assets/united-states.svg"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { lightTheme, darkTheme } from "../styles/theme"
 
 const Container = styled.div`
   color: ${({ theme }) => theme.textHeader};
@@ -50,7 +51,7 @@ const DivRow = styled.div`
   }
 `
 
-const Title = styled.a`
+const Links = styled(AniLink)`
   padding: 10px 10px;
   color: ${({ theme }) => theme.textHeader};
 
@@ -59,6 +60,11 @@ const Title = styled.a`
     border-bottom: 2px solid ${({ theme }) => theme.purple};
   }
 `
+
+const LinkLanguage = styled(AniLink)`
+  color: ${({ theme }) => theme.textHeader};
+`
+
 const SvgStyleHover = css`
   transition: all 0.2s ease-in-out;
   :hover {
@@ -165,10 +171,6 @@ const ChangeLanguage = styled.div`
   }
 `
 
-const LinkCss = styled(Link)`
-  color: ${({ theme }) => theme.textHeader};
-`
-
 export default function Header({ theme, toggleTheme }) {
   Header.propTypes = {
     theme: string.isRequired,
@@ -188,6 +190,10 @@ export default function Header({ theme, toggleTheme }) {
     return true
   }
 
+  function getActualTheme() {
+    return theme === "dark" ? darkTheme.body : lightTheme.body
+  }
+
   return (
     <Container>
       <HeaderContainer>
@@ -195,9 +201,25 @@ export default function Header({ theme, toggleTheme }) {
           <Logo logoType={theme === "dark" ? "white" : "purple"} size={80} />
         </DivRow>
         <div>
-          <Title href="/">{intl.formatMessage({ id: "hello" })}</Title>
+          <Links
+            cover
+            to="/"
+            duration={1}
+            direction="down"
+            bg={getActualTheme()}
+          >
+            {intl.formatMessage({ id: "hello" })}
+          </Links>
           <span>|</span>
-          <Title href="/blog">{intl.formatMessage({ id: "section" })}</Title>
+          <Links
+            cover
+            to="/blog"
+            duration={1}
+            direction="down"
+            bg={getActualTheme()}
+          >
+            {intl.formatMessage({ id: "section" })}
+          </Links>
         </div>
         <DivRow>
           <a href="https://www.instagram.com/alan.secundo/" target="blank">
@@ -223,9 +245,15 @@ export default function Header({ theme, toggleTheme }) {
             <span></span>
           </DarkModeDiv>
           <ChangeLanguage>
-            <LinkCss to={isLanguageBR() ? "/en" : "/"}>
+            <LinkLanguage
+              cover
+              duration={1}
+              direction="down"
+              bg={getActualTheme()}
+              to={isLanguageBR() ? "/en" : "/"}
+            >
               <span>{intl.formatMessage({ id: "language" })}</span>
-            </LinkCss>
+            </LinkLanguage>
             {isLanguageBR() ? <BRIcon /> : <USIcon />}
           </ChangeLanguage>
         </DivRow>

@@ -1,7 +1,10 @@
 module.exports = {
   pathPrefix: "/alanblog",
   siteMetadata: {
-    siteUrl: "https://alansecundosite.gtsb.io/",
+    siteUrl: "https://alansecundo.netlify.app/",
+    title: "React Blog | Alan Secundo",
+    description:
+      "Um blog sobre tecnologias de Desenvolvimento Front-end e Engenharia de software. Scrum, React, Gatsby e muito mais.",
   },
   plugins: [
     `gatsby-transformer-sharp`,
@@ -10,6 +13,20 @@ module.exports = {
     `gatsby-plugin-layout`,
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-modal-routing`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `foeqmvytx6r0`,
+        accessToken: `nylQmlrchywmFKIpbOR5wr2J9gdSjCLtp730MwfkeIg`,
+        downloadLocal: true,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-transition-link",
+      options: {
+        layout: require.resolve(`./src/components/Layout.jsx`),
+      },
+    },
     {
       resolve: `gatsby-plugin-intl`,
       options: {
@@ -87,7 +104,7 @@ module.exports = {
         name: `Alan Secundo Blog`,
         short_name: `AlanReactBlog`,
         start_url: `/`,
-        icon: `src/assets/logo-icon.png`
+        icon: `src/assets/logo-icon.png`,
       },
     },
   ],

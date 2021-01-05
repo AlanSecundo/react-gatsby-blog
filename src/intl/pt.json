@@ -12,7 +12,7 @@
   "workTogether": "Tem interesse em trabalharmos juntos? Fico a disposição para uma conversa.",
   "contactTitle": "Currículo e Contato",
   "phrase": "Transformando cada novo desafio em oportunidades de aprendizado e crescimento.",
-  "technologys": "Tecnologias utilizadas: React | Gatsby | Javascript",
+  "technologys": "Tecnologias e Integrações: React | Gatsby | Javascript | Contentful",
   "developedByMe": "Desenvolvido por eu mesmo | Alan Secundo",
   "gutoFeedback": "Tive o prazer de conhecer e trabalhar com o Alan durante o evento do Ticnova 2018. Ele é um profissional altamente comunicativo que recomendo e gostaria de poder trabalhar com ele novamente. Alan está muito determinada a conseguir o que quer e o que precisa ser feito. Uma das característica que mais me impressiona é sua empatia e sua atitude positiva. Ele trabalha de forma única e tem a capacidade de entender rapidamente todo o escopo de um negócio. Alan é estratégico e tem uma visão de oportunidades. Indicaria para qualquer empresa por ser o tipo de profissional que só tem a agregar!",
   "nathFeedback": "Alan é um profissional completo, além da parte técnica excelente, possui um relacionamento interpessoal excepcional e é extremamente engajado com o aprendizado e evolução contínua! Sua atenção aos detalhes e preocupação com a qualidade da entrega, além do clima e bem estar da equipe, fazem de Alan um profissional muito flexível e adaptável, trazendo bons resultados por onde que que passe.",
@@ -30,5 +30,13 @@
   "inovaAgro2": "2° Lugar Hackathon Inova Agro",
   "research": "Prêmio Melhor Iniciação Científica da área de Ciencias Exatas na Unicesumar",
   "spaceApps": "Palestrante no Hackathon NASA SPACE Apps 2019",
-  "language": "PT-BR"
+  "language": "PT-BR",
+  "frontEnd": "Front-end",
+  "videoPresentation": "Vídeo de apresentação",
+  "curriculumPDF": "Currículo em PDF",
+  "informations": "Informações",
+  "noted": "Anotado",
+  "previous": "Anterior",
+  "next": "Próximo",
+  "of": "de"
 }

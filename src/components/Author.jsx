@@ -12,8 +12,6 @@ import { testimonials } from "../utils/testimonials"
 // Internal Components
 
 import Slider from "./Slider"
-import Logo from "./Logo"
-import Typography from "./Typography"
 import SkillCard from "./SkillCard"
 import MemoryCard from "./MemoryCard"
 import ModalContact from "./ModalContact"
@@ -32,10 +30,6 @@ const RowSpaceBetween = css`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`
-
-const MainContainer = styled.div`
-  font-family: "Titillium Web", sans-serif;
 `
 
 const Container = styled.div`
@@ -188,10 +182,7 @@ const Button = styled.div`
   }
 `
 
-export default function Body({ theme }) {
-  Body.propTypes = {
-    theme,
-  }
+export default function Author() {
 
   const [contactModalState, setContactModalState] = useState(false)
 
@@ -206,7 +197,7 @@ export default function Body({ theme }) {
   const intl = useIntl()
 
   return (
-    <MainContainer>
+    <div>
       <Container>
         <Article>
           <H1>{intl.formatMessage({ id: "mainTitle" })}</H1>
@@ -272,24 +263,8 @@ export default function Body({ theme }) {
               </Column>
             </ContactDiv>
           </DarkBlueDiv>
-        </Container>
-        <Container>
-          <div>
-            <Logo logoType="white" size={100} />
-            <Typography size="medium">
-              {intl.formatMessage({ id: "phrase" })}
-            </Typography>
-            <div>
-              <Typography size="medium">
-              {intl.formatMessage({ id: "technologys" })}
-              </Typography>
-            </div>
-            <Typography size="small">
-              {intl.formatMessage({ id: "developedByMe" })}
-            </Typography>
-          </div>
-        </Container>
+        </Container>  
       </PurpleContainer>
-    </MainContainer>
+    </div>
   )
 }

@@ -1,0 +1,138 @@
+import React from "react"
+import styled, { keyframes } from "styled-components"
+import Typography from "./Typography"
+import TagSvg from "../assets/tag.svg"
+import { lightTheme } from "../styles/theme"
+
+const Card = styled.div`
+  background-color: transparent;
+  width: 40rem;
+  box-shadow: rgba(168, 166, 166, 0.527) 0px 1px 5px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  position: relative;
+  margin: 25px auto 10px auto;
+  border-radius: 4px;
+  transition: all 0.1s ease-in-out;
+
+  :hover {
+    transform: scale(1.01);
+  }
+`
+
+const Clockwise = keyframes`
+  0% {
+    top: -3px;
+    left: 0;
+  }
+  12% {
+    top: -2px;
+    left: 2px;
+  }
+  25% {
+    top: 0;
+    left: 5px;    
+  }
+  37% {
+    top: 2px;
+    left: 2px;
+  }
+  50% {
+    top: 3px;
+    left: 0;    
+  }
+  62% {
+    top: 2px;
+    left: -2px;
+  }
+  75% {
+    top: 0;
+    left: -5px;
+  }
+  87% {
+    top: -2px;
+    left: -2px;
+  }
+  100% {
+    top: -3px;
+    left: 0;    
+  }
+`
+
+const EffectDiv = styled.div`
+  transition: all 0.4s ease-in-out;
+
+  :hover {
+    transform: scale(1.01);
+    box-shadow: ${({ theme }) => theme.purpleSecondary} 0px 0px 3px 1px;
+  }
+
+  :hover::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: ${({ theme }) => theme.purpleSecondary};
+    border-radius: 4px;
+    z-index: -1;
+    animation: 0.7s ${Clockwise} 1;
+  }
+`
+
+const InsideDiv = styled.div`
+  background-color: ${({ theme }) => theme.body};
+  z-index: 1;
+  padding: 5px 20px 25px 25px;
+  border-radius: 4px;
+`
+
+const H1 = styled.h1`
+  margin: 0px 0 -15px 0;
+`
+
+const TagIcon = styled(TagSvg)`
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+`
+
+const FlexCenterDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+
+export default function BlogCard( props ) {
+
+  function needComma(array, index) {
+    if (array.length === index + 1) {
+      return " "
+    }
+    return ","
+  }
+
+  return (
+    <Card>
+      <EffectDiv>
+        <InsideDiv>
+          <Typography size="small">{props.data.publishDate}</Typography>
+          <H1>{props.data.title}</H1>
+          <Typography size="large" color={lightTheme.grey}>
+            {props.data.description.description}
+          </Typography>
+          <br />
+          <FlexCenterDiv>
+            <TagIcon />
+            <span>
+              {props.data.tags.map((el, index, array) => (
+                <span key={index}>
+                  {el}
+                  {needComma(array, index)}{" "}
+                </span>
+              ))}
+            </span>
+          </FlexCenterDiv>
+        </InsideDiv>
+      </EffectDiv>
+    </Card>
+  )
+}

@@ -5,7 +5,7 @@ import skillsIcon from "../assets/skills.svg"
 export const skillList = [
   {
     icon: devIcon,
-    title: "Front-end",
+    title: "frontEnd",
     text: "devSkillText",
     subtitle: "tech",
     list: [

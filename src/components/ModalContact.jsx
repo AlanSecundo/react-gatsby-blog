@@ -5,6 +5,7 @@ import whatsapp from "../assets/whatsapp.svg"
 import videoIcon from "../assets/video.svg"
 import Modal from "./Modal"
 import styled, { css } from "styled-components"
+import { useIntl } from "gatsby-plugin-intl"
 
 
 const FlexCenter = css`
@@ -75,6 +76,8 @@ const VideoIcon = styled(videoIcon)`
 
 export default function ModalContact(props) {
 
+  const intl = useIntl()
+
   function changeModalState() {
     props.closeModal();    
   }
@@ -83,8 +86,8 @@ export default function ModalContact(props) {
     <Modal
       showModal={props.contactModalState}
       closeModal={changeModalState}
-      title={"Informações"}
-      button={"Anotado!"}
+      title={intl.formatMessage({ id: "informations" })}
+      button={intl.formatMessage({ id: "noted" })}
     >
       <Row>
         <List>
@@ -97,16 +100,16 @@ export default function ModalContact(props) {
             target="blank"
           >
             <WhatsappIcon />
-            <span>(44) 99957-6173</span>
+            <span>+55 (44) 99957-6173</span>
           </AlignCenter>
         </List>
         <DivColumnCenter>
           <VideoIcon />
-          <span>Vídeo de apresentação</span>
+          <span>{intl.formatMessage({ id: "videoPresentation" })}</span>
         </DivColumnCenter>
         <DivColumnCenter>
           <CurriculumIcon />
-          <span>Currículo em PDF</span>
+          <span>{intl.formatMessage({ id: "curriculumPDF" })}</span>
         </DivColumnCenter>
       </Row>
     </Modal>
