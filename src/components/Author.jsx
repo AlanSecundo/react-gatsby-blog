@@ -183,7 +183,6 @@ const Button = styled.div`
 `
 
 export default function Author() {
-
   const [contactModalState, setContactModalState] = useState(false)
 
   function changeModalState() {
@@ -255,7 +254,9 @@ export default function Author() {
                 <p>{intl.formatMessage({ id: "workTogether" })}</p>
               </Column>
               <Column>
-                <Button onClick={changeModalState}>{intl.formatMessage({ id: "contactTitle" })}</Button>
+                <Button onClick={changeModalState}>
+                  {intl.formatMessage({ id: "contactTitle" })}
+                </Button>
                 <ModalContact
                   contactModalState={contactModalState}
                   closeModal={changeModalState}
@@ -263,7 +264,7 @@ export default function Author() {
               </Column>
             </ContactDiv>
           </DarkBlueDiv>
-        </Container>  
+        </Container>
       </PurpleContainer>
     </div>
   )

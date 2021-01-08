@@ -9,7 +9,7 @@ import { useIntl } from "gatsby-plugin-intl"
 import BrazilIcon from "../assets/brazil.svg"
 import USAIcon from "../assets/united-states.svg"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { lightTheme, darkTheme } from "../styles/theme"
+import { getActualTheme } from "../utils/getActualTheme"
 
 const Container = styled.div`
   color: ${({ theme }) => theme.textHeader};
@@ -188,10 +188,6 @@ export default function Header({ theme, toggleTheme }) {
       return false
     }
     return true
-  }
-
-  function getActualTheme() {
-    return theme === "dark" ? darkTheme.body : lightTheme.body
   }
 
   return (

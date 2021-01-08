@@ -3,6 +3,8 @@ import styled, { keyframes } from "styled-components"
 import Typography from "./Typography"
 import TagSvg from "../assets/tag.svg"
 import { lightTheme } from "../styles/theme"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { getActualTheme } from "../utils/getActualTheme"
 
 const Card = styled.div`
   background-color: transparent;
@@ -16,6 +18,7 @@ const Card = styled.div`
 
   :hover {
     transform: scale(1.01);
+    cursor: pointer;
   }
 `
 
@@ -101,8 +104,13 @@ const FlexCenterDiv = styled.div`
   align-items: center;
 `
 
-export default function BlogCard( props ) {
+const Link = styled(AniLink)`
+  all: unset;
+  text-decoration: none;
+  color: ${({ theme }) => theme.text};
+`
 
+export default function BlogCard(props) {
   function needComma(array, index) {
     if (array.length === index + 1) {
       return " "
@@ -111,28 +119,36 @@ export default function BlogCard( props ) {
   }
 
   return (
-    <Card>
-      <EffectDiv>
-        <InsideDiv>
-          <Typography size="small">{props.data.publishDate}</Typography>
-          <H1>{props.data.title}</H1>
-          <Typography size="large" color={lightTheme.grey}>
-            {props.data.description.description}
-          </Typography>
-          <br />
-          <FlexCenterDiv>
-            <TagIcon />
-            <span>
-              {props.data.tags.map((el, index, array) => (
-                <span key={index}>
-                  {el}
-                  {needComma(array, index)}{" "}
-                </span>
-              ))}
-            </span>
-          </FlexCenterDiv>
-        </InsideDiv>
-      </EffectDiv>
-    </Card>
+    <Link
+      cover
+      duration={1}
+      direction="down"
+      bg={getActualTheme()}
+      to={`/blog/post/${props.data.slug}`}
+    >
+      <Card>
+        <EffectDiv>
+          <InsideDiv>
+            <Typography size="small">{props.data.publishDate}</Typography>
+            <H1>{props.data.title}</H1>
+            <Typography size="large" color={lightTheme.grey}>
+              {props.data.description.description}
+            </Typography>
+            <br />
+            <FlexCenterDiv>
+              <TagIcon />
+              <span>
+                {props.data.tags.map((el, index, array) => (
+                  <span key={index}>
+                    {el}
+                    {needComma(array, index)}{" "}
+                  </span>
+                ))}
+              </span>
+            </FlexCenterDiv>
+          </InsideDiv>
+        </EffectDiv>
+      </Card>
+    </Link>
   )
 }

@@ -13,12 +13,19 @@ module.exports = {
     `gatsby-plugin-layout`,
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-modal-routing`,
+    `gatsby-transformer-remark`,
     {
-      resolve: `gatsby-source-contentful`,
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/pages`,
+      },
+    },
+    {
+      resolve: "gatsby-source-contentful",
       options: {
         spaceId: `foeqmvytx6r0`,
         accessToken: `nylQmlrchywmFKIpbOR5wr2J9gdSjCLtp730MwfkeIg`,
-        downloadLocal: true,
       },
     },
     {
@@ -70,15 +77,15 @@ module.exports = {
             }
         }`,
         resolveSiteUrl: ({ site }) => {
-          return site.siteMetadata.siteUrl
+          return site.siteMetadata.siteUrl;
         },
         serialize: ({ site, allSitePage }) =>
-          allSitePage.nodes.map(node => {
+          allSitePage.nodes.map((node) => {
             return {
               url: `${site.siteMetadata.siteUrl}${node.path}`,
               changefreq: `weekly`,
               priority: 0.5,
-            }
+            };
           }),
       },
     },
@@ -108,4 +115,4 @@ module.exports = {
       },
     },
   ],
-}
+};
