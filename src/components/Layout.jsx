@@ -19,7 +19,7 @@ export default function Layout(props) {
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <MainLayout>
         <Header theme={theme} toggleTheme={toggleTheme} />
-          {props.children}
+          {/* {props.children} */}
       </MainLayout>
     </ThemeProvider>
   )
