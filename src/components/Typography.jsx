@@ -5,7 +5,7 @@ export default function Typography(props) {
 
   const TypographyText = styled.div`
     font-size: ${props.size === 'small' ? 12 : props.size === 'medium' ? 16 : 20}px;
-    color: ${props.color === undefined ? ({ theme }) => theme.text : props.color};
+    color: ${props => props.theme.color || props.theme.text};
     margin-top: 10px;
     margin-bottom: 5px;
   `

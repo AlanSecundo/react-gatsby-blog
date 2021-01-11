@@ -59,8 +59,8 @@ module.exports = {
       options: {
         openGraph: {
           type: "website",
-          locale: "en_IE",
-          url: "https://alansecundosite.gtsb.io/",
+          locale: "pt_BR",
+          url: "https://alansecundo.netlify.app/",
           site_name: "React Blog | Alan Secundo",
         },
         twitter: {
@@ -103,8 +103,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "https://alansecundosite.gtsb.io/",
-        sitemap: "https://alansecundosite.gtsb.io/sitemap.xml",
+        host: "https://alansecundo.netlify.app/",
+        sitemap: "https://alansecundo.netlify.app/sitemap.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
