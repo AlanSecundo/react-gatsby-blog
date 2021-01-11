@@ -5,7 +5,6 @@ import { ThemeProvider } from "styled-components"
 import styled from "styled-components"
 import { lightTheme, darkTheme } from "../styles/theme"
 import { useDarkMode } from "../utils/darkModeLogic"
-import Footer from "../components/Footer"
 
 const MainLayout = styled.div`
   font-family: "Titillium Web", sans-serif;
@@ -21,7 +20,6 @@ export default function Layout(props) {
       <MainLayout>
         <Header theme={theme} toggleTheme={toggleTheme} />
           {props.children}
-        <Footer />
       </MainLayout>
     </ThemeProvider>
   )

@@ -1,10 +1,10 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
 import Typography from "./Typography"
-import TagSvg from "../assets/tag.svg"
 import { lightTheme } from "../styles/theme"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { getActualTheme } from "../utils/getActualTheme"
+import Tags from "./Tags"
 
 const Card = styled.div`
   background-color: transparent;
@@ -92,18 +92,6 @@ const H1 = styled.h1`
   margin: 0px 0 -15px 0;
 `
 
-const TagIcon = styled(TagSvg)`
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-`
-
-const FlexCenterDiv = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
-
 const Link = styled(AniLink)`
   all: unset;
   text-decoration: none;
@@ -111,12 +99,6 @@ const Link = styled(AniLink)`
 `
 
 export default function BlogCard(props) {
-  function needComma(array, index) {
-    if (array.length === index + 1) {
-      return " "
-    }
-    return ","
-  }
 
   return (
     <Link
@@ -135,17 +117,7 @@ export default function BlogCard(props) {
               {props.data.description.description}
             </Typography>
             <br />
-            <FlexCenterDiv>
-              <TagIcon />
-              <span>
-                {props.data.tags.map((el, index, array) => (
-                  <span key={index}>
-                    {el}
-                    {needComma(array, index)}{" "}
-                  </span>
-                ))}
-              </span>
-            </FlexCenterDiv>
+            <Tags tags={props.data.tags} />
           </InsideDiv>
         </EffectDiv>
       </Card>

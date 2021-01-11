@@ -49,7 +49,7 @@ exports.createPages = ({ graphql, actions }) => {
     Array.from({ length: numPages }).forEach((_, index) => {
       createPage({
         path: index === 0 ? `/blog` : `/blog/page/${index + 1}`,
-        component: path.resolve("./src/layouts/blog-layout.jsx"),
+        component: path.resolve("./src/layouts/blog-layout-list.jsx"),
         context: {
           limit: postsPerPage,
           skip: index * postsPerPage,

@@ -3,12 +3,15 @@ import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Typography from "../components/Typography"
 import { graphql } from "gatsby"
+import Tags from "../components/Tags"
+import DisqusComponent from "../components/DisqusComponent"
 
 const BlogSection = styled.div`
   margin-left: auto;
   margin-right: auto;
   max-width: 680px;
   padding-top: 2rem;
+  font-size: 1.1rem;
 `
 
 const InternalLink = styled(AniLink)`
@@ -20,23 +23,103 @@ const InternalLink = styled(AniLink)`
   }
 `
 
-export default function BlogLayout({ data }) {
-  
+const PostContent = styled.div`
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  letter-spacing: 0.4px;
+  line-height: 1.5em;
+`
+
+const Span = styled.span`
+  color: ${({ theme }) => theme.grey};
+`
+
+const NextPreviousSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+`
+
+const NextPost = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+`
+
+const PreviousPost = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+`
+
+const SectionMargin = styled.div`
+  min-height: 4rem;
+`
+
+export default function BlogLayout({ data, pageContext }) {
+  let post = data.contentfulBlogPost
+
+  const { next, previous } = pageContext
+
   return (
     <BlogSection>
       <InternalLink cover duration={1} direction="down" to={`/blog/`}>
         ← Voltar na listagem
       </InternalLink>
-      <Typography size="small">
-        <span>{data.contentfulBlogPost.publishDate}</span>
-      </Typography>
-      <h1>{data.contentfulBlogPost.title}</h1>
+      <Typography size="small">{post.publishDate}</Typography>
+      <h1>{post.title}</h1>
       <Typography size="large">
-        {data.contentfulBlogPost.description.description}
+        <Span>{post.description.description}</Span>
       </Typography>
-      <Typography size="medium">
-        <div dangerouslySetInnerHTML={{ __html: data.contentfulBlogPost.body.childMarkdownRemark.html }} />
+      <Typography size="small">
+        <Tags tags={post.tags} />
       </Typography>
+      <PostContent>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: post.body.childMarkdownRemark.html,
+          }}
+        />
+      </PostContent>
+      <hr />
+      <NextPreviousSection>
+        <SectionMargin>
+          {previous === null ? null : (
+            <PreviousPost>
+              <Typography size="small">Anterior</Typography>
+              <InternalLink
+                cover
+                duration={1}
+                direction="down"
+                to={`/blog/post/${previous.slug}`}
+              >
+                ← {previous.title}
+              </InternalLink>
+            </PreviousPost>
+          )}
+        </SectionMargin>
+        <SectionMargin>
+          {next === null ? null : (
+            <NextPost>
+              <Typography size="small">Próximo</Typography>
+              <InternalLink
+                cover
+                duration={1}
+                direction="down"
+                to={`/blog/post/${next.slug}`}
+              >
+                {next.title} →
+              </InternalLink>
+            </NextPost>
+          )}
+        </SectionMargin>
+      </NextPreviousSection>
+      <DisqusComponent />
     </BlogSection>
   )
 }
@@ -51,6 +134,7 @@ export const query = graphql`
           html
         }
       }
+      tags
       description {
         description
       }

@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   pathPrefix: "/alanblog",
   siteMetadata: {
@@ -14,6 +18,12 @@ module.exports = {
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-modal-routing`,
     `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `reactalanblog.netlify.app`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -78,15 +88,15 @@ module.exports = {
             }
         }`,
         resolveSiteUrl: ({ site }) => {
-          return site.siteMetadata.siteUrl;
+          return site.siteMetadata.siteUrl
         },
         serialize: ({ site, allSitePage }) =>
-          allSitePage.nodes.map((node) => {
+          allSitePage.nodes.map(node => {
             return {
               url: `${site.siteMetadata.siteUrl}${node.path}`,
               changefreq: `weekly`,
               priority: 0.5,
-            };
+            }
           }),
       },
     },
@@ -116,4 +126,4 @@ module.exports = {
       },
     },
   ],
-};
+}
