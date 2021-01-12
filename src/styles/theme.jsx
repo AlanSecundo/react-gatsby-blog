@@ -25,7 +25,7 @@ export const darkTheme = {
 export const defaultTheme = {
   body: "var(--color-body)",
   text: "var(--color-text)",
-  backgroundHeader: "var(--color-backgroundHeader)",
+  backgroundHeader: "var(--color-bg-header)",
   borderTheme: "#31333380",
   purple: "#8c37fa",
   textWhite: "#ffffff",
