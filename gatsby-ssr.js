@@ -9,15 +9,12 @@ const MagicScriptTag = () => {
       root.style.setProperty(
         '--color-text', actualTheme === 'dark' ? "${darkTheme.text}" : "${lightTheme.text}"
       );
-      alert(root.style.getPropertyValue('--color-text'));
       root.style.setProperty(
         '--color-body', actualTheme === 'dark' ? "${darkTheme.body}" : "${lightTheme.body}"
       );
       root.style.setProperty(
         '--color-bg-header', actualTheme === 'dark' ? "${darkTheme.backgroundHeader}" : "${lightTheme.backgroundHeader}"
       );
-      alert(root.style.getPropertyValue('--color-body'));
-      alert(root.style.getPropertyValue('--color-bg-header'));
     })()
   `
   // eslint-disable-next-line react/no-danger
