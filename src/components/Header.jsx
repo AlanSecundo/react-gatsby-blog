@@ -12,7 +12,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { getActualTheme } from "../utils/getActualTheme"
 
 const Container = styled.div`
-  color: ${props => props.theme.textHeader};
+  color: ${props => props.theme.text};
   background-color: ${props => props.theme.backgroundHeader};
   transition: all 0.3s ease-in-out;
   font-family: "Titillium Web", sans-serif;
@@ -43,7 +43,7 @@ const flexCenter = css`
 `
 
 const DivRow = styled.div`
-  color: ${({ theme }) => theme.textHeader};
+  color: ${({ theme }) => theme.text};
   min-height: 5rem;
   ${flexCenter}
   @media (max-width: 800px) {
@@ -53,7 +53,7 @@ const DivRow = styled.div`
 
 const Links = styled(AniLink)`
   padding: 10px 10px;
-  color: ${({ theme }) => theme.textHeader};
+  color: ${({ theme }) => theme.text};
 
   &:hover {
     color: ${({ theme }) => theme.purple};
@@ -62,7 +62,7 @@ const Links = styled(AniLink)`
 `
 
 const LinkLanguage = styled(AniLink)`
-  color: ${({ theme }) => theme.textHeader};
+  color: ${({ theme }) => theme.text};
 `
 
 const SvgStyleHover = css`

@@ -21,7 +21,7 @@ const ModalMain = styled.div`
 `
 const ModalContent = styled.div`
   position: relative;
-  color: ${({ theme }) => theme.textHeader};
+  color: ${({ theme }) => theme.text};
   background-color: ${({ theme }) => theme.body};
   width: 50%;
   border-radius: 5px;

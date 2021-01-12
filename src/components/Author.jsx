@@ -88,7 +88,7 @@ const PurpleContainer = styled.div`
 
 const SkillsContainer = styled.div`
   border-radius: 6px;
-  color: ${({ theme }) => theme.textHeader};
+  color: ${({ theme }) => theme.text};
   background-color: ${({ theme }) => theme.body};
   box-shadow: 0 5px 5px 0 ${({ theme }) => theme.borderTheme},
     0 0 0 1px ${({ theme }) => theme.borderTheme};
