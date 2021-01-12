@@ -9,6 +9,7 @@ const MagicScriptTag = () => {
       root.style.setProperty(
         '--color-text', actualTheme === 'dark' ? "${darkTheme.text}" : "${lightTheme.text}"
       );
+      alert(root.style.getPropertyValue('--color-text'));
       root.style.setProperty(
         '--color-body', actualTheme === 'dark' ? "${darkTheme.body}" : "${lightTheme.body}"
       );
