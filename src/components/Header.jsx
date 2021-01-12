@@ -12,8 +12,8 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { getActualTheme } from "../utils/getActualTheme"
 
 const Container = styled.div`
-  color: ${props => props.theme.text};
-  background-color: ${props => props.theme.backgroundHeader};
+  color: var('--color-text');
+  background-color: var('--color-background');
   transition: all 0.3s ease-in-out;
   font-family: "Titillium Web", sans-serif;
   font-weight: 700;
