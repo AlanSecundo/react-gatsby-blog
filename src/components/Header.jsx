@@ -118,8 +118,7 @@ export default function Header({ theme }) {
     if (typeof window === "undefined") {
       return 
     }
-    console.log('/' + window.location.pathname.replace('/en/', ""))
-    return window.location.pathname.replace('/en/', "")
+    return window.location.pathname.replace('/en/', "");
   }
 
   function isLanguageBR() {

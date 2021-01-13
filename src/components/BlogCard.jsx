@@ -97,8 +97,11 @@ const Link = styled(AniLink)`
   color: var(--color-text);
 `
 
-export default function BlogCard(props) {
+const GreySpan = styled.span`
+  color: var(--color-grey-primary);
+`
 
+export default function BlogCard(props) {
   return (
     <Link
       cover
@@ -112,8 +115,8 @@ export default function BlogCard(props) {
           <InsideDiv>
             <Typography size="small">{props.data.publishDate}</Typography>
             <H1>{props.data.title}</H1>
-            <Typography size="large" color={'var(--color-grey-primary)'}>
-              {props.data.description.description}
+            <Typography size="large">
+              <GreySpan>{props.data.description.description}</GreySpan>
             </Typography>
             <br />
             <Tags tags={props.data.tags} />

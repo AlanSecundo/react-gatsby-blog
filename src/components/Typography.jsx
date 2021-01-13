@@ -1,14 +1,34 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
+
+const defaultTypography = css`
+  margin-top: 10px;
+  margin-bottom: 5px;
+`
+
+const TypographySmall = styled.div`
+  ${defaultTypography}
+  font-size: 12px;
+`
+const TypographyMedium = styled.div`
+  ${defaultTypography}
+  font-size: 16px;
+`
+
+const TypographyLarge = styled.div`
+  ${defaultTypography}
+  font-size: 20px;
+`
 
 export default function Typography(props) {
 
-  const TypographyText = styled.div`
-    font-size: ${props.size === 'small' ? 12 : props.size === 'medium' ? 16 : 20}px;
-    color: ${props.color === undefined ? 'var(--color-text)' : props.color};
-    margin-top: 10px;
-    margin-bottom: 5px;
-  `
+  if (props.size === "large") {
+    return <TypographyLarge> {props.children} </TypographyLarge>
+  }
 
-  return <TypographyText> {props.children} </TypographyText>
+  if (props.size === "small") {
+    return <TypographySmall> {props.children} </TypographySmall>
+  }
+  
+  return <TypographyMedium> {props.children} </TypographyMedium>
 }

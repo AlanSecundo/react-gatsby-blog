@@ -50,15 +50,15 @@ export default function Footer({ props }) {
       <Container>
         <div>
           <Logo logoType="white" size={100} />
-          <Typography size="medium" color={'var(--color-white-primary)'}>
+          <Typography size="medium">
             {intl.formatMessage({ id: "phrase" })}
           </Typography>
           <div>
-            <Typography size="medium" color={'var(--color-white-primary)'}>
+            <Typography size="medium">
               {intl.formatMessage({ id: "technologys" })}
             </Typography>
           </div>
-          <Typography size="small" color={'var(--color-white-primary)'}>
+          <Typography size="small" >
             {intl.formatMessage({ id: "developedByMe" })}
           </Typography>
         </div>
