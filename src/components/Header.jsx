@@ -113,6 +113,14 @@ export default function Header({ theme }) {
   }
 
   const intl = useIntl()
+  
+  function getUrl() {
+    if (typeof window === "undefined") {
+      return 
+    }
+    console.log('/' + window.location.pathname.replace('/en/', ""))
+    return window.location.pathname.replace('/en/', "")
+  }
 
   function isLanguageBR() {
     if (typeof window === "undefined") {
@@ -134,7 +142,7 @@ export default function Header({ theme }) {
         <div>
           <Links
             cover
-            to="/"
+            to={isLanguageBR() ? "/" : '/en'}
             duration={1}
             direction="down"
             bg={getActualTheme()}
@@ -144,7 +152,7 @@ export default function Header({ theme }) {
           <span>|</span>
           <Links
             cover
-            to="/blog"
+            to={isLanguageBR() ? "/blog" : '/en/blog'}
             duration={1}
             direction="down"
             bg={getActualTheme()}
@@ -172,7 +180,7 @@ export default function Header({ theme }) {
               duration={1}
               direction="down"
               bg={getActualTheme()}
-              to={isLanguageBR() ? "/en" : "/"}
+              to={isLanguageBR() ? `/en${getUrl()}` : `/${getUrl()}`}
             >
               <span>{intl.formatMessage({ id: "language" })}</span>
             </LinkLanguage>

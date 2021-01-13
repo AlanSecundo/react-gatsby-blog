@@ -5,7 +5,6 @@ const MagicScriptTag = () => {
     (function() {
       function setTheme(theme) {
         window.__theme = theme;
-        console.log('Theme updated:', theme);
         if (theme === 'dark') {
           document.documentElement.className = 'dark';
         } else {

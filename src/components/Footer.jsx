@@ -3,7 +3,6 @@ import styled, { css } from "styled-components"
 import Typography from "./Typography"
 import Logo from "./Logo"
 import { useIntl } from "gatsby-plugin-intl"
-import { lightTheme } from "../styles/theme"
 
 const FlexCenter = css`
   display: flex;
@@ -51,15 +50,15 @@ export default function Footer({ props }) {
       <Container>
         <div>
           <Logo logoType="white" size={100} />
-          <Typography size="medium" color={lightTheme.textWhite}>
+          <Typography size="medium" color={'var(--color-white-primary)'}>
             {intl.formatMessage({ id: "phrase" })}
           </Typography>
           <div>
-            <Typography size="medium" color={lightTheme.textWhite}>
+            <Typography size="medium" color={'var(--color-white-primary)'}>
               {intl.formatMessage({ id: "technologys" })}
             </Typography>
           </div>
-          <Typography size="small" color={lightTheme.textWhite}>
+          <Typography size="small" color={'var(--color-white-primary)'}>
             {intl.formatMessage({ id: "developedByMe" })}
           </Typography>
         </div>

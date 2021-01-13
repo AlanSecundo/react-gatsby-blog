@@ -1,7 +1,6 @@
 import React from "react"
 import styled, { keyframes } from "styled-components"
 import Typography from "./Typography"
-import { lightTheme } from "../styles/theme"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { getActualTheme } from "../utils/getActualTheme"
 import Tags from "./Tags"
@@ -113,7 +112,7 @@ export default function BlogCard(props) {
           <InsideDiv>
             <Typography size="small">{props.data.publishDate}</Typography>
             <H1>{props.data.title}</H1>
-            <Typography size="large" color={lightTheme.grey}>
+            <Typography size="large" color={'var(--color-grey-primary)'}>
               {props.data.description.description}
             </Typography>
             <br />

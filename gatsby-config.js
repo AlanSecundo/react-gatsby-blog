@@ -18,12 +18,6 @@ module.exports = {
     `gatsby-plugin-modal-routing`,
     `gatsby-transformer-remark`,
     {
-      resolve: `gatsby-plugin-disqus`,
-      options: {
-        shortname: `reactalanblog.netlify.app`,
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,

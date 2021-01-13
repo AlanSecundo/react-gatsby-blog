@@ -4,7 +4,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Typography from "../components/Typography"
 import { graphql } from "gatsby"
 import Tags from "../components/Tags"
-import DisqusComponent from "../components/DisqusComponent"
+import { DiscussionEmbed } from "disqus-react"
 
 const BlogSection = styled.div`
   margin-left: auto;
@@ -39,8 +39,7 @@ const NextPreviousSection = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 4rem;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
 `
 
 const NextPost = styled.div`
@@ -63,6 +62,11 @@ const SectionMargin = styled.div`
 
 export default function BlogLayout({ data, pageContext }) {
   let post = data.contentfulBlogPost
+
+  const disqusConfig = {
+    shortname: process.env.GATSBY_DISQUS_NAME,
+    config: { identifier: post.title },
+  }
 
   const { next, previous } = pageContext
 
@@ -119,7 +123,7 @@ export default function BlogLayout({ data, pageContext }) {
           )}
         </SectionMargin>
       </NextPreviousSection>
-      <DisqusComponent />
+      <DiscussionEmbed {...disqusConfig} />
     </BlogSection>
   )
 }
