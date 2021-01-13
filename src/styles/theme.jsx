@@ -21,15 +21,3 @@ export const darkTheme = {
   grey: "#757575",
   purpleSecondary: "#a972f0",
 }
-
-export const defaultTheme = {
-  body: "var(--color-body)",
-  text: "var(--color-text)",
-  backgroundHeader: "var(--color-bg-header)",
-  borderTheme: "#31333380",
-  purple: "#8c37fa",
-  textWhite: "#ffffff",
-  darkBlue: "#141c3a",
-  grey: "#757575",
-  purpleSecondary: "#a972f0",
-}

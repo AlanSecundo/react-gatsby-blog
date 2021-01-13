@@ -15,7 +15,6 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-layout`,
-    `gatsby-plugin-dark-mode`,
     `gatsby-plugin-modal-routing`,
     `gatsby-transformer-remark`,
     {
@@ -42,7 +41,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-transition-link",
       options: {
-        layout: require.resolve(`./src/components/Layout.jsx`),
+        layout: require.resolve(`./src/layouts/Layout.jsx`),
       },
     },
     {

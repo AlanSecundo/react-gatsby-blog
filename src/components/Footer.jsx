@@ -12,8 +12,8 @@ const FlexCenter = css`
 `
 
 const PurpleContainer = styled.div`
-  background-color: ${({ theme }) => theme.purple};
-  color: ${({ theme }) => theme.textWhite};
+  background-color: var(--color-purple-primary);
+  color: var(--color-white-primary);
   flex-direction: column;
   ${FlexCenter}
   text-align: center;

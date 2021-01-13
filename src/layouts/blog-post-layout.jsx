@@ -15,10 +15,10 @@ const BlogSection = styled.div`
 `
 
 const InternalLink = styled(AniLink)`
-  color: ${({ theme }) => theme.text};
+  color: var(--color-text);
   font-weight: 300;
   :hover {
-    border-bottom: 2px solid ${({ theme }) => theme.purpleSecondary};
+    border-bottom: 2px solid var(--color-purple-secondary);
     cursor: pointer;
   }
 `
@@ -31,7 +31,7 @@ const PostContent = styled.div`
 `
 
 const Span = styled.span`
-  color: ${({ theme }) => theme.grey};
+  color: var(--color-grey-primary);
 `
 
 const NextPreviousSection = styled.div`

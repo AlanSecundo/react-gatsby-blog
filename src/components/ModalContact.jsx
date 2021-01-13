@@ -30,7 +30,7 @@ const AlignCenter = styled.a`
   align-items: center;
   cursor: pointer;
   font-weight: 500;
-  color: ${({ theme }) => theme.text};
+  color: var(--color-text);
   transition: all 0.2s ease-in-out;
   &:hover {
     transform: scale(1.05);

@@ -3,17 +3,18 @@ import styled, { css } from "styled-components"
 import InstagramIcon from "../assets/instagram.svg"
 import LinkedinIcon from "../assets/linkedin.svg"
 import SpotifyIcon from "../assets/spotify.svg"
-import { func, string } from "prop-types"
+import { string } from "prop-types"
 import Logo from "./Logo"
 import { useIntl } from "gatsby-plugin-intl"
 import BrazilIcon from "../assets/brazil.svg"
 import USAIcon from "../assets/united-states.svg"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { getActualTheme } from "../utils/getActualTheme"
+import ToogleComponent from "./ToogleTheme"
 
 const Container = styled.div`
-  color: var('--color-text');
-  background-color: var('--color-background');
+  color: var(--color-text);
+  background-color: var(--color-body);
   transition: all 0.3s ease-in-out;
   font-family: "Titillium Web", sans-serif;
   font-weight: 700;
@@ -43,7 +44,7 @@ const flexCenter = css`
 `
 
 const DivRow = styled.div`
-  color: ${({ theme }) => theme.text};
+  color: var(--color-text);
   min-height: 5rem;
   ${flexCenter}
   @media (max-width: 800px) {
@@ -53,16 +54,16 @@ const DivRow = styled.div`
 
 const Links = styled(AniLink)`
   padding: 10px 10px;
-  color: ${({ theme }) => theme.text};
+  color: var(--color-text);
 
   &:hover {
-    color: ${({ theme }) => theme.purple};
-    border-bottom: 2px solid ${({ theme }) => theme.purple};
+    color: var(--color-purple-primary);
+    border-bottom: 2px solid var(--color-purple-primary);
   }
 `
 
 const LinkLanguage = styled(AniLink)`
-  color: ${({ theme }) => theme.text};
+  color: var(--color-text);
 `
 
 const SvgStyleHover = css`
@@ -96,71 +97,6 @@ const BRIcon = styled(BrazilIcon)`
   ${SvgStyle}
 `
 
-// TOOGLE CSS
-
-const DarkModeDiv = styled.label`
-  position: relative;
-  display: inline-block;
-  width: 48px;
-  height: 28px;
-  top: -2px;
-  left: 3px;
-
-  > input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  > span {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: ${({ theme }) => theme.purple};
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-    border-radius: 40px;
-
-    :before {
-      position: absolute;
-      content: "";
-      height: 20px;
-      width: 20px;
-      left: 6px;
-      bottom: 4px;
-      background-color: ${({ theme }) => theme.textWhite};
-      border-radius: 40px;
-      -webkit-transition: 0.3s;
-      transition: 0.3s;
-    }
-  }
-
-  > input:checked + span {
-    background-color: ${({ theme }) => theme.textWhite};
-  }
-
-  > input:checked + span:before {
-    -webkit-transform: translateX(17px);
-    -ms-transform: translateX(17px);
-    transform: translateX(17px);
-    background-color: transparent;
-    box-shadow: inset -7px -1px 0 1px ${({ theme }) => theme.purple};
-  }
-`
-
-const HiddeLabel = styled.label`
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-`
 const ChangeLanguage = styled.div`
   ${flexCenter}
   cursor: pointer;
@@ -171,10 +107,9 @@ const ChangeLanguage = styled.div`
   }
 `
 
-export default function Header({ theme, toggleTheme }) {
+export default function Header({ theme }) {
   Header.propTypes = {
     theme: string.isRequired,
-    toogleTheme: func.isRequired,
   }
 
   const intl = useIntl()
@@ -230,16 +165,7 @@ export default function Header({ theme, toggleTheme }) {
           >
             <SpotIcon />
           </a>
-          <DarkModeDiv>
-            <HiddeLabel htmlFor="slider">Slider modo noturno</HiddeLabel>
-            <input
-              name="slider"
-              type="checkbox"
-              onChange={toggleTheme}
-              checked={theme === "dark"}
-            />
-            <span></span>
-          </DarkModeDiv>
+          <ToogleComponent />
           <ChangeLanguage>
             <LinkLanguage
               cover

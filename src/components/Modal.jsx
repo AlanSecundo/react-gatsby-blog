@@ -21,8 +21,8 @@ const ModalMain = styled.div`
 `
 const ModalContent = styled.div`
   position: relative;
-  color: ${({ theme }) => theme.text};
-  background-color: ${({ theme }) => theme.body};
+  color: var(--color-text);
+  background-color: var(--color-body);
   width: 50%;
   border-radius: 5px;
   padding: 0px 30px 20px 30px;
@@ -47,17 +47,17 @@ const SpaceBetweenDiv = styled.div`
 `
 
 const Button = styled.div`
-  color: ${({ theme }) => theme.textWhite};
-  background-color: ${({ theme }) => theme.purple};
+  color: var(--color-white-primary);
+  background-color: var(--color-purple-primary);
   padding: 7px 20px;
   border-radius: 50px;
-  border: solid 1px ${({ theme }) => theme.purple};
+  border: solid 1px var(--color-purple-primary);
   cursor: pointer;
   transition: 0.5s;
   
   :hover {
     background-color: transparent;
-    color: ${({ theme }) => theme.purple};
+    color: var(--color-purple-primary);
   }
 `
 

@@ -19,7 +19,7 @@ const Footer = styled.div`
 `
 
 const HR = styled.hr`
-  border-top: 1px solid ${({ theme }) => theme.purpleSecondary};
+  border-top: 1px solid var(--color-purple-secondary);
 `
 
 const Grid = styled.div`
@@ -28,10 +28,10 @@ const Grid = styled.div`
 `
 const HoverTypography = styled(AniLink)`
   font-weight: 100;
-  color: ${({ theme }) => theme.text};
+  color: var(--color-text);
   :hover {
     cursor: pointer;
-    border-bottom: 2px solid ${({ theme }) => theme.purpleSecondary};
+    border-bottom: 2px solid var(--color-purple-secondary);
   }
 `
 const FleboxStyle = css`

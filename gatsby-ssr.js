@@ -1,21 +1,37 @@
 import React from 'react';
-import { lightTheme, darkTheme } from "./src/styles/theme"
 
 const MagicScriptTag = () => {
   const codeToRunOnClient = `
     (function() {
-      const root = document.documentElement;
-      const actualTheme = window.localStorage.getItem("theme");
-      root.style.setProperty(
-        '--color-text', actualTheme === 'dark' ? "${darkTheme.text}" : "${lightTheme.text}"
-      );
-      alert(root.style.getPropertyValue('--color-text'));
-      root.style.setProperty(
-        '--color-body', actualTheme === 'dark' ? "${darkTheme.body}" : "${lightTheme.body}"
-      );
-      root.style.setProperty(
-        '--color-bg-header', actualTheme === 'dark' ? "${darkTheme.backgroundHeader}" : "${lightTheme.backgroundHeader}"
-      );
+      function setTheme(theme) {
+        window.__theme = theme;
+        console.log('Theme updated:', theme);
+        if (theme === 'dark') {
+          document.documentElement.className = 'dark';
+        } else {
+          document.documentElement.className = '';
+        }
+      };
+
+      window.__setPreferredTheme = function(theme) {
+        setTheme(theme);
+        try {
+          localStorage.setItem('theme', theme);
+        } catch (e) {
+          console.log(e)
+        }
+      };
+
+      let preferredTheme;
+      try {
+        preferredTheme = localStorage.getItem('theme');
+      } catch (e) {
+        console.log(e)
+      }
+
+      let darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+      setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
     })()
   `
   // eslint-disable-next-line react/no-danger

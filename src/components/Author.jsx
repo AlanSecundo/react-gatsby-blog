@@ -73,8 +73,8 @@ const H1 = styled.h1`
 `
 
 const PurpleContainer = styled.div`
-  background-color: ${({ theme }) => theme.purple};
-  color: ${({ theme }) => theme.textWhite};
+  background-color: var(--color-purple-primary);
+  color: var(--color-white-primary);
   flex-direction: column;
   ${FlexCenter}
   text-align: center;
@@ -88,10 +88,10 @@ const PurpleContainer = styled.div`
 
 const SkillsContainer = styled.div`
   border-radius: 6px;
-  color: ${({ theme }) => theme.text};
-  background-color: ${({ theme }) => theme.body};
-  box-shadow: 0 5px 5px 0 ${({ theme }) => theme.borderTheme},
-    0 0 0 1px ${({ theme }) => theme.borderTheme};
+  color: var(--color-text);
+  background-color: var(--color-body);
+  box-shadow: 0 5px 5px 0 var(--color-border-theme),
+    0 0 0 1px var(--color-border-theme);
   margin-top: -12rem;
   max-width: 1200px;
   display: grid;
@@ -137,7 +137,7 @@ const LogoCompanys = styled.img`
 
 const DarkBlueDiv = styled.div`
   width: 80vw;
-  background-color: ${({ theme }) => theme.darkBlue};
+  background-color: var(--color-dark-blue);
   border-radius: 20px;
   margin-top: -10rem;
   font-size: 16px;
@@ -171,7 +171,7 @@ const WhiteDiv = styled.div`
 const Button = styled.div`
   background-color: transparent;
   border-radius: 40px;
-  border: 2px solid ${({ theme }) => theme.purple};
+  border: 2px solid var(--color-purple-primary);
   padding: 12px 24px;
   transition: 0.5s;
   width: 50%;

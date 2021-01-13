@@ -66,7 +66,7 @@ const EffectDiv = styled.div`
 
   :hover {
     transform: scale(1.01);
-    box-shadow: ${({ theme }) => theme.purpleSecondary} 0px 0px 3px 1px;
+    box-shadow: var(--color-purple-secondary) 0px 0px 3px 1px;
   }
 
   :hover::before {
@@ -74,7 +74,7 @@ const EffectDiv = styled.div`
     width: 100%;
     height: 100%;
     position: absolute;
-    background: ${({ theme }) => theme.purpleSecondary};
+    background: var(--color-purple-secondary);
     border-radius: 4px;
     z-index: -1;
     animation: 0.7s ${Clockwise} 1;
@@ -82,7 +82,7 @@ const EffectDiv = styled.div`
 `
 
 const InsideDiv = styled.div`
-  background-color: ${({ theme }) => theme.body};
+  background-color: var(--color-body);
   z-index: 1;
   padding: 5px 20px 25px 25px;
   border-radius: 4px;
@@ -95,7 +95,7 @@ const H1 = styled.h1`
 const Link = styled(AniLink)`
   all: unset;
   text-decoration: none;
-  color: ${({ theme }) => theme.text};
+  color: var(--color-text);
 `
 
 export default function BlogCard(props) {
