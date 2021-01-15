@@ -107,7 +107,7 @@ const GreySpan = styled.span`
 
 export default function BlogCard(props) {
   function getUrl() {
-    if (window === "undefined") {
+    if (typeof window === "undefined") {
       return 
     }
     return window.location.pathname
