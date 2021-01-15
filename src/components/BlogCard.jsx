@@ -7,7 +7,7 @@ import Tags from "./Tags"
 
 const Card = styled.div`
   background-color: transparent;
-  width: 40rem;
+  max-width: 40rem;
   box-shadow: rgba(168, 166, 166, 0.527) 0px 1px 5px 0px,
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   position: relative;
@@ -18,6 +18,10 @@ const Card = styled.div`
   :hover {
     transform: scale(1.01);
     cursor: pointer;
+  }
+
+  @media (max-width: 800px) {
+    max-width: 90vw;
   }
 `
 
@@ -102,15 +106,19 @@ const GreySpan = styled.span`
 `
 
 export default function BlogCard(props) {
+  function getUrl() {
+    return window.location.pathname
+  }
+
   return (
-    <Link
-      cover
-      duration={1}
-      direction="down"
-      bg={getActualTheme()}
-      to={`/blog/post/${props.data.slug}`}
-    >
-      <Card>
+    <Card>
+      <Link
+        cover
+        duration={1}
+        direction="down"
+        bg={getActualTheme()}
+        to={`${getUrl()}/post/${props.data.slug}`}
+      >
         <EffectDiv>
           <InsideDiv>
             <Typography size="small">{props.data.publishDate}</Typography>
@@ -122,7 +130,7 @@ export default function BlogCard(props) {
             <Tags tags={props.data.tags} />
           </InsideDiv>
         </EffectDiv>
-      </Card>
-    </Link>
+      </Link>
+    </Card>
   )
 }

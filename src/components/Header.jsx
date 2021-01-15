@@ -3,7 +3,6 @@ import styled, { css } from "styled-components"
 import InstagramIcon from "../assets/instagram.svg"
 import LinkedinIcon from "../assets/linkedin.svg"
 import SpotifyIcon from "../assets/spotify.svg"
-import { string } from "prop-types"
 import Logo from "./Logo"
 import { useIntl } from "gatsby-plugin-intl"
 import BrazilIcon from "../assets/brazil.svg"
@@ -11,6 +10,7 @@ import USAIcon from "../assets/united-states.svg"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { getActualTheme } from "../utils/getActualTheme"
 import ToogleComponent from "./ToogleTheme"
+import { isLanguageBR } from "../utils/isLanguageBr"
 
 const Container = styled.div`
   color: var(--color-text);
@@ -21,9 +21,8 @@ const Container = styled.div`
 `
 
 const HeaderContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   margin-left: auto;
   margin-right: auto;
@@ -31,7 +30,13 @@ const HeaderContainer = styled.div`
   padding-top: 10px;
   padding-bottom: 10px;
 
+  /* 
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  row-gap: 1rem; */
+
   @media (max-width: 800px) {
+    display: flex;
     flex-direction: column;
   }
 `
@@ -64,6 +69,13 @@ const Links = styled(AniLink)`
 
 const LinkLanguage = styled(AniLink)`
   color: var(--color-text);
+  ${flexCenter}
+  cursor: pointer;
+  margin: 0 0 0 10px;
+  transition: all 0.2s ease-in-out;
+  :hover {
+    transform: scale(1.1);
+  }
 `
 
 const SvgStyleHover = css`
@@ -97,95 +109,108 @@ const BRIcon = styled(BrazilIcon)`
   ${SvgStyle}
 `
 
-const ChangeLanguage = styled.div`
+const LeftContainer = styled.div`
   ${flexCenter}
-  cursor: pointer;
-  margin: 0 0 0 10px;
-  transition: all 0.2s ease-in-out;
-  :hover {
-    transform: scale(1.1);
-  }
+  justify-content: flex-start;
 `
 
-export default function Header({ theme }) {
+const CenterContainer = styled.div`
+  ${flexCenter}
+  justify-content: center;
+`
+
+const RightContainer = styled.div`
+  ${flexCenter}
+  justify-content: flex-end;
+`
+
+export default function Header(props) {
   Header.propTypes = {
-    theme: string.isRequired,
+    isArticle: Boolean.isRequired,
+    actualSlug: String,
+    otherLanguageSlug: String,
   }
 
   const intl = useIntl()
-  
+
   function getUrl() {
     if (typeof window === "undefined") {
-      return 
+      return
     }
-    return window.location.pathname.replace('/en/', "");
-  }
 
-  function isLanguageBR() {
-    if (typeof window === "undefined") {
-      return true
+    let url = window.location.pathname
+
+    if (isLanguageBR()) {
+      url = url.replace("/br", "/en").replace("/artigos", "/articles")
+    } else {
+      url = url.replace("/en", "/br").replace("/articles", "/artigos")
     }
-    let url = window.location.href
-    if (url.indexOf("/en") > -1) {
-      return false
+
+    if (props.isArticle) {
+      return url.replace(props.actualSlug, props.otherLanguageSlug)
     }
-    return true
+
+    return url
   }
 
   return (
     <Container>
       <HeaderContainer>
-        <DivRow>
-          <Logo logoType={theme === "dark" ? "white" : "purple"} size={80} />
-        </DivRow>
-        <div>
-          <Links
-            cover
-            to={isLanguageBR() ? "/" : '/en'}
-            duration={1}
-            direction="down"
-            bg={getActualTheme()}
-          >
-            {intl.formatMessage({ id: "hello" })}
-          </Links>
-          <span>|</span>
-          <Links
-            cover
-            to={isLanguageBR() ? "/blog" : '/en/blog'}
-            duration={1}
-            direction="down"
-            bg={getActualTheme()}
-          >
-            {intl.formatMessage({ id: "section" })}
-          </Links>
-        </div>
-        <DivRow>
-          <a href="https://www.instagram.com/alan.secundo/" target="blank">
-            <InstaIcon />
-          </a>
-          <a href="https://www.linkedin.com/in/alansecundo/" target="blank">
-            <LinkedIcon />
-          </a>
-          <a
-            href="https://open.spotify.com/playlist/2pwLNddOouJITrbFWG82Kw"
-            target="blank"
-          >
-            <SpotIcon />
-          </a>
-          <ToogleComponent />
-          <ChangeLanguage>
-            <LinkLanguage
+        <LeftContainer>
+          <DivRow>
+            <Logo logoType={"purple"} />
+          </DivRow>
+        </LeftContainer>
+        <CenterContainer>
+          <div>
+            <Links
               cover
-              duration={1}
+              to={isLanguageBR() ? "/br" : "/en"}
+              duration={0.5}
               direction="down"
               bg={getActualTheme()}
-              to={isLanguageBR() ? `/en${getUrl()}` : `/${getUrl()}`}
+            >
+              {intl.formatMessage({ id: "hello" })}
+            </Links>
+            <span>|</span>
+            <Links
+              cover
+              to={isLanguageBR() ? "/br/artigos" : "/en/articles"}
+              duration={0.5}
+              direction="down"
+              bg={getActualTheme()}
+            >
+              {intl.formatMessage({ id: "section" })}
+            </Links>
+          </div>
+        </CenterContainer>
+        <RightContainer>
+          <DivRow>
+            <a href="https://www.instagram.com/alan.secundo/" target="blank">
+              <InstaIcon />
+            </a>
+            <a href="https://www.linkedin.com/in/alansecundo/" target="blank">
+              <LinkedIcon />
+            </a>
+            <a
+              href="https://open.spotify.com/playlist/2pwLNddOouJITrbFWG82Kw"
+              target="blank"
+            >
+              <SpotIcon />
+            </a>
+            <ToogleComponent />
+            <LinkLanguage
+              cover
+              duration={0.5}
+              direction="down"
+              bg={getActualTheme()}
+              to={getUrl()}
             >
               <span>{intl.formatMessage({ id: "language" })}</span>
+              {isLanguageBR() ? <BRIcon /> : <USIcon />}
             </LinkLanguage>
-            {isLanguageBR() ? <BRIcon /> : <USIcon />}
-          </ChangeLanguage>
-        </DivRow>
+          </DivRow>
+        </RightContainer>
       </HeaderContainer>
     </Container>
   )

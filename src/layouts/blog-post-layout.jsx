@@ -5,6 +5,9 @@ import Typography from "../components/Typography"
 import { graphql } from "gatsby"
 import Tags from "../components/Tags"
 import { DiscussionEmbed } from "disqus-react"
+import { pathByLanguage } from "../utils/manageUrlPath"
+import { useIntl } from "gatsby-plugin-intl"
+import Header from "../components/Header"
 
 const BlogSection = styled.div`
   margin-left: auto;
@@ -12,6 +15,10 @@ const BlogSection = styled.div`
   max-width: 680px;
   padding-top: 2rem;
   font-size: 1.1rem;
+
+  @media (max-width: 800px) {
+    max-width: 90vw;
+  }
 `
 
 const InternalLink = styled(AniLink)`
@@ -47,6 +54,7 @@ const NextPost = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  text-align: right;
 `
 
 const PreviousPost = styled.div`
@@ -61,7 +69,11 @@ const SectionMargin = styled.div`
 `
 
 export default function BlogLayout({ data, pageContext }) {
-  let post = data.contentfulBlogPost
+  let post = data.post
+  let slugPostOtherLanguage = data.slugPostOtherLanguage.slug
+  let actualSlug = data.post.slug
+
+  const intl = useIntl()
 
   const disqusConfig = {
     shortname: process.env.GATSBY_DISQUS_NAME,
@@ -71,9 +83,16 @@ export default function BlogLayout({ data, pageContext }) {
   const { next, previous } = pageContext
 
   return (
-    <BlogSection>
-      <InternalLink cover duration={1} direction="down" to={`/blog/`}>
-        ← Voltar na listagem
+    <div>
+      <Header isArticle={true} otherLanguageSlug={slugPostOtherLanguage} actualSlug={actualSlug} />
+      <BlogSection>
+      <InternalLink
+        cover
+        duration={1}
+        direction="down"
+        to={`${pathByLanguage()}`}
+      >
+        ← {intl.formatMessage({ id: "backToList" })}
       </InternalLink>
       <Typography size="small">{post.publishDate}</Typography>
       <h1>{post.title}</h1>
@@ -95,12 +114,14 @@ export default function BlogLayout({ data, pageContext }) {
         <SectionMargin>
           {previous === null ? null : (
             <PreviousPost>
-              <Typography size="small">Anterior</Typography>
+              <Typography size="small">
+                {intl.formatMessage({ id: "previous" })}
+              </Typography>
               <InternalLink
                 cover
                 duration={1}
                 direction="down"
-                to={`/blog/post/${previous.slug}`}
+                to={`${pathByLanguage()}/post/${previous.slug}`}
               >
                 ← {previous.title}
               </InternalLink>
@@ -110,12 +131,14 @@ export default function BlogLayout({ data, pageContext }) {
         <SectionMargin>
           {next === null ? null : (
             <NextPost>
-              <Typography size="small">Próximo</Typography>
+              <Typography size="small">
+                {intl.formatMessage({ id: "next" })}
+              </Typography>
               <InternalLink
                 cover
                 duration={1}
                 direction="down"
-                to={`/blog/post/${next.slug}`}
+                to={`${pathByLanguage()}/post/${next.slug}`}
               >
                 {next.title} →
               </InternalLink>
@@ -125,23 +148,35 @@ export default function BlogLayout({ data, pageContext }) {
       </NextPreviousSection>
       <DiscussionEmbed {...disqusConfig} />
     </BlogSection>
+    </div>
   )
 }
 
 export const query = graphql`
-  query getBlogPostBySlug($slug: String!) {
-    contentfulBlogPost(slug: { eq: $slug }) {
+  query getBlogPostBySlug(
+    $slug: String!
+    $contentfulId: String!
+    $reverseLocale: String!
+  ) {
+    post: contentfulBlogPost(slug: { eq: $slug }) {
       title
-      publishDate(formatString: "DD MMM, YYYY", locale: "pt-br")
+      publishDate(formatString: "DD MMM, YYYY")
       body {
         childMarkdownRemark {
           html
         }
       }
+      slug
       tags
       description {
         description
       }
+    }
+    slugPostOtherLanguage: contentfulBlogPost(
+      contentful_id: { eq: $contentfulId }
+      node_locale: { eq: $reverseLocale }
+    ) {
+      slug
     }
   }
 `

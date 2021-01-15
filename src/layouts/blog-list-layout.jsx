@@ -6,20 +6,32 @@ import Typography from "../components/Typography"
 import { useIntl } from "gatsby-plugin-intl"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { getActualTheme } from "../utils/getActualTheme"
-
+import { pathByLanguage } from "../utils/manageUrlPath"
+import Header from "../components/Header"
 
 const ListBlogCard = styled.div`
   margin-top: 5rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 800px) {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
 `
 
 const Footer = styled.div`
   width: 41rem;
   margin: 0px auto 10px auto;
+  @media (max-width: 800px) {
+    max-width: 90vw;
+  }
 `
 
 const HR = styled.hr`
   border-top: 1px solid ${({ theme }) => theme.purpleSecondary};
+
+  @media (max-width: 800px) {
+  }
 `
 
 const Grid = styled.div`
@@ -68,9 +80,10 @@ export default function Blog({ data }) {
 
   return (
     <div>
+      <Header isArticle={false} />
       <ListBlogCard>
         {data.allContentfulBlogPost.edges.map((el, index) => (
-          <BlogCard data={el.node} key={index}/>
+          <BlogCard data={el.node} key={index} />
         ))}
       </ListBlogCard>
       <Footer>
@@ -84,7 +97,7 @@ export default function Blog({ data }) {
                   duration={1}
                   direction="down"
                   bg={getActualTheme()}
-                  to={`/blog${
+                  to={`${pathByLanguage()}${
                     data.allContentfulBlogPost.pageInfo.currentPage - 1 <= 1
                       ? ""
                       : `/page/${
@@ -112,7 +125,7 @@ export default function Blog({ data }) {
                   duration={1}
                   direction="down"
                   bg={getActualTheme()}
-                  to={`/blog/page/${
+                  to={`${pathByLanguage()}/page/${
                     data.allContentfulBlogPost.pageInfo.currentPage + 1
                   }`}
                 >
@@ -128,11 +141,12 @@ export default function Blog({ data }) {
 }
 
 export const query = graphql`
-  query blogQuery($skip: Int!, $limit: Int!) {
+  query blogQuery($skip: Int!, $limit: Int!, $locale: String!) {
     allContentfulBlogPost(
       sort: { fields: publishDate, order: DESC }
       limit: $limit
       skip: $skip
+      filter: {node_locale: {eq: $locale}}
     ) {
       edges {
         node {

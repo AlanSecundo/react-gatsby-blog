@@ -38,7 +38,7 @@ const Container = styled.div`
   text-align: center;
 
   @media (max-width: 800px) {
-    max-width: 90%;
+    max-width: 90vw;
   }
 `
 
@@ -49,16 +49,18 @@ export default function Footer({ props }) {
     <PurpleContainer>
       <Container>
         <div>
-          <Logo logoType="white" size={100} />
-          <Typography size="medium">
-            {intl.formatMessage({ id: "phrase" })}
-          </Typography>
+          <Logo logoType="white" />
+          <b>
+            <Typography size="medium">
+              {intl.formatMessage({ id: "phrase" })}
+            </Typography>
+          </b>
           <div>
             <Typography size="medium">
               {intl.formatMessage({ id: "technologys" })}
             </Typography>
           </div>
-          <Typography size="small" >
+          <Typography size="small">
             {intl.formatMessage({ id: "developedByMe" })}
           </Typography>
         </div>

@@ -19,6 +19,8 @@ import ModalContact from "./ModalContact"
 // Assets
 import avataralan from "../assets/avataralan.svg"
 
+import Header from "../components/Header"
+
 const FlexCenter = css`
   display: flex;
   justify-content: center;
@@ -197,6 +199,7 @@ export default function Author() {
 
   return (
     <div>
+      <Header isArticle={false} />
       <Container>
         <Article>
           <H1>{intl.formatMessage({ id: "mainTitle" })}</H1>
