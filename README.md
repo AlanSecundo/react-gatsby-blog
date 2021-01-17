@@ -15,7 +15,7 @@ If you don't know one of them, you can read about:
 - [Gatsby](https://www.gatsbyjs.org/)
 - [GraphQL](https://graphql.org/)
 - [Styled Components](https://www.styled-components.com/)
-- [Contentful CMS](https://www.contentful.com/)/
+- [Contentful CMS](https://www.contentful.com/)
 
 ### References
 
