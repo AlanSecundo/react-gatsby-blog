@@ -14,7 +14,7 @@ const BlogSection = styled.div`
   margin-right: auto;
   max-width: 680px;
   padding-top: 2rem;
-  font-size: 1.1rem;
+  font-size: 19px;
 
   @media (max-width: 800px) {
     max-width: 90vw;
@@ -34,7 +34,7 @@ const PostContent = styled.div`
   margin-top: 2rem;
   margin-bottom: 2rem;
   letter-spacing: 0.4px;
-  line-height: 1.5em;
+  line-height: 1.6;
 `
 
 const Span = styled.span`
@@ -68,6 +68,10 @@ const SectionMargin = styled.div`
   min-height: 4rem;
 `
 
+const H1 = styled.h1`
+  margin-bottom: 0;
+`
+
 export default function BlogLayout({ data, pageContext }) {
   let post = data.post
   let slugPostOtherLanguage = data.slugPostOtherLanguage.slug
@@ -95,7 +99,7 @@ export default function BlogLayout({ data, pageContext }) {
         ← {intl.formatMessage({ id: "backToList" })}
       </InternalLink>
       <Typography size="small">{post.publishDate}</Typography>
-      <h1>{post.title}</h1>
+      <H1>{post.title}</H1>
       <Typography size="large">
         <Span>{post.description.description}</Span>
       </Typography>

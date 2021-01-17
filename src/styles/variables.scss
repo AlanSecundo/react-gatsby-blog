@@ -5,7 +5,8 @@
   --color-body: #ffffff;
   --color-text: #141c3a;
   --color-bg-header: #ffffff;
-  --color-border-theme: #E6ECF8;
+  --color-border-primary: #E6ECF8;
+  --color-border-secondary: #d8d8d8b0;
   --color-purple-primary: #7510f7;
   --color-white-primary: #ffffff;
   --color-dark-blue: #141c3a;
@@ -17,10 +18,11 @@
 /* Dark Mode */
 
 :root.dark {
-  --color-body: #1d1d1d;
+  --color-body: #0E141B;
   --color-text: #ffffffe6;
   --color-bg-header: #ffffff;
-  --color-border-theme: #0f0f0f;
+  --color-border-primary: #0f0f0f;
+  --color-border-secondary: #2d2d2d;
   --color-purple-primary: #8c37fa;
   --color-white-primary: #ffffff;
   --color-dark-blue: #141c3a;

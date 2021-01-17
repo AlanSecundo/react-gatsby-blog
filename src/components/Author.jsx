@@ -42,7 +42,7 @@ const Container = styled.div`
   padding-bottom: 10px;
   font-weight: 300;
   font-size: 20px;
-  line-height: 1.7;
+  line-height: 1.6;
   ${FlexCenter}
   flex-direction: column;
   text-align: center;
@@ -92,8 +92,8 @@ const SkillsContainer = styled.div`
   border-radius: 6px;
   color: var(--color-text);
   background-color: var(--color-body);
-  box-shadow: 0 5px 5px 0 var(--color-border-theme),
-    0 0 0 1px var(--color-border-theme);
+  box-shadow: 0 5px 5px 0 var(--color-border-primary),
+    0 0 0 1px var(--color-border-primary);
   margin-top: -12rem;
   max-width: 1200px;
   display: grid;

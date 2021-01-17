@@ -22,15 +22,9 @@ const ListBlogCard = styled.div`
 const Footer = styled.div`
   width: 41rem;
   margin: 0px auto 10px auto;
+  border-top: 1px solid var(--color-border-secondary);
   @media (max-width: 800px) {
     max-width: 90vw;
-  }
-`
-
-const HR = styled.hr`
-  border-top: 1px solid ${({ theme }) => theme.purpleSecondary};
-
-  @media (max-width: 800px) {
   }
 `
 
@@ -87,7 +81,6 @@ export default function Blog({ data }) {
         ))}
       </ListBlogCard>
       <Footer>
-        <HR />
         <Grid>
           <DivLeft>
             <Typography size="medium">

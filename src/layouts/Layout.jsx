@@ -7,6 +7,7 @@ const MainLayout = styled.div`
   color: var(--color-text);
   background-color: var(--color-body);
   min-height: 100vh;
+  line-height: 1.6;
 `
 
 export default function Layout(props) {

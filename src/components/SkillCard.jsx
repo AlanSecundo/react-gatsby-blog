@@ -7,13 +7,13 @@ const Column = styled.div`
   align-items: center;
   flex-direction: column;
   text-align: center;
-  border-bottom: 0px solid var(--color-border-theme);
-  border-right: 1px solid var(--color-border-theme);
+  border-bottom: 0px solid var(--color-border-primary);
+  border-right: 1px solid var(--color-border-primary);
   padding: 2rem;
 
   @media (max-width: 800px) {
     flex-direction: column;
-    border-bottom: 1px solid var(--color-border-theme);
+    border-bottom: 1px solid var(--color-border-primary);
   }
 `
 const IconStyle = css`
