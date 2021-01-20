@@ -103,12 +103,17 @@ const Link = styled(AniLink)`
 
 const GreySpan = styled.span`
   color: var(--color-grey-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 `
 
 export default function BlogCard(props) {
   function getUrl() {
     if (typeof window === "undefined") {
-      return 
+      return
     }
     return window.location.pathname
   }
