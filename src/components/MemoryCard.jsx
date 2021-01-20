@@ -31,29 +31,28 @@ const TextContainer = styled.div`
   flex-direction: column;
 `
 
-export default function MemoryCard({ Memorie }) {
+const MainDiv = styled.div`
+  background-repeat: no-repeat, repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  position: relative;
+`
+
+export default function MemoryCard(props) {
   MemoryCard.propTypes = {
-    Memorie: Object.required,
+    memorie: Object.required,
   }
 
-  const MainDiv = styled.div`
-    background-image: url(${Memorie.image});
-    background-repeat: no-repeat, repeat;
-    background-position: center;
-    background-size: cover;
-    border-radius: 10px;
-    position: relative;
-  `
-
   const intl = useIntl()
-
+  
   return (
-    <MainDiv>
+    <MainDiv style={{ backgroundImage: `url(${props.memorie.image})` }}>
       <Layer>
         <TextContainer>
-          <span>{intl.formatMessage({ id: Memorie.title })}</span>
+          <span>{intl.formatMessage({ id: props.memorie.title })}</span>
           <span>
-            <b>{Memorie.year}</b>
+            <b>{props.memorie.year}</b>
           </span>
         </TextContainer>
       </Layer>
