@@ -228,7 +228,7 @@ export default function Author() {
         <h2>{intl.formatMessage({ id: "personalSubtitle" })}</h2>
         <MemoryCardGrid>
           {cardList.map((memorie, index) => {
-            return <MemoryCard Memorie={memorie} key={index} />
+            return <MemoryCard memorie={memorie} key={index} />
           })}
         </MemoryCardGrid>
       </Container>

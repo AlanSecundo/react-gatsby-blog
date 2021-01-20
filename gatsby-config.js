@@ -18,6 +18,20 @@ module.exports = {
     `gatsby-plugin-modal-routing`,
     `gatsby-transformer-remark`,
     {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              maxWidth: 650,
+              wrapperStyle: 'margin-left: 0 !important;'
+            },
+          },
+        ],
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,

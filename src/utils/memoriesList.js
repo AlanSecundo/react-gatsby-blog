@@ -7,16 +7,16 @@ import nasa from "../assets/nasa.jpg"
 
 export const cardList = [
   {
-    backgroundColor: "#7510f7b3",
-    image: paranatic,
-    year: "2017",
-    title: "paranaTic",
-  },
-  {
     backgroundColor: "#141c3a94",
     image: droneHackathon,
     year: "2017",
     title: "droneHackathon",
+  },
+  {
+    backgroundColor: "#7510f7b3",
+    image: paranatic,
+    year: "2017",
+    title: "paranaTic",
   },
   {
     backgroundColor: "#7510f7b3",
