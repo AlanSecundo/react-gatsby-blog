@@ -3,6 +3,7 @@ import styled, { css } from "styled-components"
 import InstagramIcon from "../assets/instagram.svg"
 import LinkedinIcon from "../assets/linkedin.svg"
 import SpotifyIcon from "../assets/spotify.svg"
+import GithubIcon from "../assets/github.svg"
 import Logo from "./Logo"
 import { useIntl } from "gatsby-plugin-intl"
 import BrazilIcon from "../assets/brazil.svg"
@@ -102,6 +103,11 @@ const SpotIcon = styled(SpotifyIcon)`
   ${SvgStyle}
   ${SvgStyleHover}
 `
+const GitIcon = styled(GithubIcon)`
+  ${SvgStyle}
+  ${SvgStyleHover}
+`
+
 const USIcon = styled(USAIcon)`
   ${SvgStyle}
 `
@@ -198,8 +204,11 @@ export default function Header(props) {
             >
               <SpotIcon />
             </a>
+            <a href="https://github.com/AlanSecundo" target="blank">
+              <GitIcon />
+            </a>
             <ToogleComponent />
-            <LinkLanguage
+            {/* <LinkLanguage
               cover
               duration={0.5}
               direction="down"
@@ -208,7 +217,7 @@ export default function Header(props) {
             >
               <span>{intl.formatMessage({ id: "language" })}</span>
               {isLanguageBR() ? <BRIcon /> : <USIcon />}
-            </LinkLanguage>
+            </LinkLanguage> */}
           </DivRow>
         </RightContainer>
       </HeaderContainer>
