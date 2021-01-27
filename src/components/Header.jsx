@@ -192,18 +192,18 @@ export default function Header(props) {
         </CenterContainer>
         <RightContainer>
           <DivRow>
-            <a href="https://www.instagram.com/alan.secundo/" target="blank">
+            {/* <a href="https://www.instagram.com/alan.secundo/" target="blank">
               <InstaIcon />
-            </a>
+            </a> */}
             <a href="https://www.linkedin.com/in/alansecundo/" target="blank">
               <LinkedIcon />
             </a>
-            <a
+            {/* <a
               href="https://open.spotify.com/playlist/2pwLNddOouJITrbFWG82Kw"
               target="blank"
             >
               <SpotIcon />
-            </a>
+            </a> */}
             <a href="https://github.com/AlanSecundo" target="blank">
               <GitIcon />
             </a>
