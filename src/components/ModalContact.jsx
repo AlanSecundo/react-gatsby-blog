@@ -103,10 +103,10 @@ export default function ModalContact(props) {
             <span>+55 (44) 99957-6173</span>
           </AlignCenter>
         </List>
-        <DivColumnCenter>
+        {/* <DivColumnCenter>
           <VideoIcon />
           <span>{intl.formatMessage({ id: "videoPresentation" })}</span>
-        </DivColumnCenter>
+        </DivColumnCenter> */}
         <DivColumnCenter>
           <CurriculumIcon />
           <span>{intl.formatMessage({ id: "curriculumPDF" })}</span>
