@@ -15,7 +15,6 @@ export const skillList = [
       "Vue.js",
       "React.js",
       "Gatsby",
-      "JEST",
       "Material UI & Quasar",
     ],
   },
@@ -44,9 +43,7 @@ export const skillList = [
       "Object Orientation (OO)",
       "GraphQL",
       "API Rest",
-      "Design System",
-      "SEO",
-      "Copy",
+      "Design System"
     ],
   }
 ]
