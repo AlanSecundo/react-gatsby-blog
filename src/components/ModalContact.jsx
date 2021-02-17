@@ -2,7 +2,7 @@ import React from "react"
 import curriculumIcon from "../assets/curriculum.svg"
 import email from "../assets/email.svg"
 import whatsapp from "../assets/whatsapp.svg"
-import videoIcon from "../assets/video.svg"
+// import videoIcon from "../assets/video.svg"
 import Modal from "./Modal"
 import styled, { css } from "styled-components"
 import { useIntl } from "gatsby-plugin-intl"
@@ -70,9 +70,9 @@ const CurriculumIcon = styled(curriculumIcon)`
   ${LargeIcons}
 `
 
-const VideoIcon = styled(videoIcon)`
-  ${LargeIcons}
-`
+// const VideoIcon = styled(videoIcon)`
+//   ${LargeIcons}
+// `
 
 export default function ModalContact(props) {
 

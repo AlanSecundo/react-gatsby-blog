@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700&display=swap');
 @import "./_variables.scss";
-
 body {
     margin: 0;
 }
@@ -9,4 +8,3 @@ a {
     text-decoration: none;
     font-weight: 600;
 }
-

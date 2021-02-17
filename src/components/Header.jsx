@@ -1,13 +1,13 @@
 import React from "react"
 import styled, { css } from "styled-components"
-import InstagramIcon from "../assets/instagram.svg"
 import LinkedinIcon from "../assets/linkedin.svg"
-import SpotifyIcon from "../assets/spotify.svg"
 import GithubIcon from "../assets/github.svg"
 import Logo from "./Logo"
 import { useIntl } from "gatsby-plugin-intl"
-import BrazilIcon from "../assets/brazil.svg"
-import USAIcon from "../assets/united-states.svg"
+// import SpotifyIcon from "../assets/spotify.svg"
+// import InstagramIcon from "../assets/instagram.svg"
+// import BrazilIcon from "../assets/brazil.svg"
+// import USAIcon from "../assets/united-states.svg"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { getActualTheme } from "../utils/getActualTheme"
 import ToogleComponent from "./ToogleTheme"
@@ -23,7 +23,7 @@ const Container = styled.div`
 
 const HeaderContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
@@ -68,16 +68,16 @@ const Links = styled(AniLink)`
   }
 `
 
-const LinkLanguage = styled(AniLink)`
-  color: var(--color-text);
-  ${flexCenter}
-  cursor: pointer;
-  margin: 0 0 0 10px;
-  transition: all 0.2s ease-in-out;
-  :hover {
-    transform: scale(1.1);
-  }
-`
+// const LinkLanguage = styled(AniLink)`
+//   color: var(--color-text);
+//   ${flexCenter}
+//   cursor: pointer;
+//   margin: 0 0 0 10px;
+//   transition: all 0.2s ease-in-out;
+//   :hover {
+//     transform: scale(1.1);
+//   }
+// `
 
 const SvgStyleHover = css`
   transition: all 0.2s ease-in-out;
@@ -95,25 +95,25 @@ const LinkedIcon = styled(LinkedinIcon)`
   ${SvgStyle}
   ${SvgStyleHover}
 `
-const InstaIcon = styled(InstagramIcon)`
-  ${SvgStyle}
-  ${SvgStyleHover}
-`
-const SpotIcon = styled(SpotifyIcon)`
-  ${SvgStyle}
-  ${SvgStyleHover}
-`
+// const InstaIcon = styled(InstagramIcon)`
+//   ${SvgStyle}
+//   ${SvgStyleHover}
+// `
+// const SpotIcon = styled(SpotifyIcon)`
+//   ${SvgStyle}
+//   ${SvgStyleHover}
+// `
 const GitIcon = styled(GithubIcon)`
   ${SvgStyle}
   ${SvgStyleHover}
 `
 
-const USIcon = styled(USAIcon)`
-  ${SvgStyle}
-`
-const BRIcon = styled(BrazilIcon)`
-  ${SvgStyle}
-`
+// const USIcon = styled(USAIcon)`
+//   ${SvgStyle}
+// `
+// const BRIcon = styled(BrazilIcon)`
+//   ${SvgStyle}
+// `
 
 const LeftContainer = styled.div`
   ${flexCenter}
@@ -122,7 +122,7 @@ const LeftContainer = styled.div`
 
 const CenterContainer = styled.div`
   ${flexCenter}
-  justify-content: center;
+  width: 100%;
 `
 
 const RightContainer = styled.div`
@@ -139,25 +139,25 @@ export default function Header(props) {
 
   const intl = useIntl()
 
-  function getUrl() {
-    if (typeof window === "undefined") {
-      return
-    }
+  // function getUrl() {
+  //   if (typeof window === "undefined") {
+  //     return
+  //   }
 
-    let url = window.location.pathname
+  //   let url = window.location.pathname
 
-    if (isLanguageBR()) {
-      url = url.replace("/br", "/en").replace("/artigos", "/articles")
-    } else {
-      url = url.replace("/en", "/br").replace("/articles", "/artigos")
-    }
+  //   if (isLanguageBR()) {
+  //     url = url.replace("/br", "/en").replace("/artigos", "/articles")
+  //   } else {
+  //     url = url.replace("/en", "/br").replace("/articles", "/artigos")
+  //   }
 
-    if (props.isArticle) {
-      return url.replace(props.actualSlug, props.otherLanguageSlug)
-    }
+  //   if (props.isArticle) {
+  //     return url.replace(props.actualSlug, props.otherLanguageSlug)
+  //   }
 
-    return url
-  }
+  //   return url
+  // }
 
   return (
     <Container>
@@ -187,6 +187,16 @@ export default function Header(props) {
               bg={getActualTheme()}
             >
               {intl.formatMessage({ id: "section" })}
+            </Links>
+            <span>|</span>
+            <Links
+              cover
+              to={isLanguageBR() ? "/br/portfolio" : "/en/portfolio"}
+              duration={0.5}
+              direction="down"
+              bg={getActualTheme()}
+            >
+              {intl.formatMessage({ id: "projects" })}
             </Links>
           </div>
         </CenterContainer>

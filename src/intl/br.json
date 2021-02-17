@@ -1,5 +1,5 @@
 {
-  "section": "Conteúdos sobre Software",
+  "section": "Conteúdos",
   "hello": "Sobre mim :)",
   "mainTitle": "Dev Front-end e Engenheiro de Software",
   "subtitle": "Em uma busca constante de aprendizado e experiências com alegria e paixão no que eu faço",
@@ -39,5 +39,6 @@
   "previous": "Anterior",
   "next": "Próximo",
   "of": "de",
-  "backToList": "Voltar para listagem"
+  "backToList": "Voltar para listagem",
+  "projects": "Projetos"
 }
