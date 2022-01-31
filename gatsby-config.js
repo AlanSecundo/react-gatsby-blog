@@ -17,6 +17,7 @@ module.exports = {
     `gatsby-plugin-layout`,
     `gatsby-plugin-modal-routing`,
     `gatsby-transformer-remark`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -25,7 +26,7 @@ module.exports = {
             resolve: `gatsby-remark-images-contentful`,
             options: {
               maxWidth: 650,
-              wrapperStyle: 'margin-left: 0 !important;'
+              wrapperStyle: "margin-left: 0 !important;",
             },
           },
         ],

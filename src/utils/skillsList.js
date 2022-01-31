@@ -14,28 +14,24 @@ export const skillList = [
       "Javascript",
       "Vue.js",
       "React.js",
+      "React Native",
       "Gatsby",
       "Material UI & Quasar",
+      "JEST",
+      "React Testing Library",
     ],
   },
   {
     icon: scrumIcon,
     title: "softwareProject",
-    text:
-      "projectsText",
+    text: "projectsText",
     subtitle: "methodologies",
-    list: [
-      "Scrum",
-      "Kanban",
-      "Pair Programming",
-      "Design Thinking"
-    ],
+    list: ["Scrum", "Kanban", "Pair Programming", "Design Thinking"],
   },
   {
     icon: skillsIcon,
     title: "knowledge",
-    text:
-      "knowledgeText",
+    text: "knowledgeText",
     subtitle: "knowledge",
     list: [
       "SQL",
@@ -43,7 +39,7 @@ export const skillList = [
       "Object Orientation (OO)",
       "GraphQL",
       "API Rest",
-      "Design System"
+      "Design System",
     ],
-  }
+  },
 ]

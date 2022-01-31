@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import Fade from "./Fade";
+import Fade from "./Fade"
 import { useIntl } from "gatsby-plugin-intl"
+import { StaticImage } from "gatsby-plugin-image"
 
 const SliderComponent = styled.div`
   display: flex;
@@ -46,12 +47,6 @@ const Container = styled.div`
   align-items: center;
 `
 
-const SocialProofAvatar = styled.img`
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-`
-
 const Text = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
@@ -59,7 +54,7 @@ const Text = styled.p`
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 
-  @media(max-width: 800px) {
+  @media (max-width: 800px) {
     font-size: 13px;
   }
 `
@@ -79,24 +74,71 @@ export default function Slider({ List }) {
 
   const intl = useIntl()
 
+  const renderImage = () => {
+    if (marked === 0) {
+      return (
+        <div className="fade-in">
+          <StaticImage
+            src="../images/guto.jpg"
+            alt="Imagem do autor do feedback"
+            width="150px"
+            height="150px"
+            style={{
+              borderRadius: "100%",
+            }}
+          />
+          <p>
+            <b>Augusto Espinelli</b>
+          </p>
+          <Text>{intl.formatMessage({ id: "gutoFeedback" })}</Text>
+        </div>
+      )
+    }
+    if (marked === 1) {
+      return (
+        <div className="fade-in">
+          <StaticImage
+            src="../images/nath.jpg"
+            alt="Imagem do autor do feedback"
+            width="150px"
+            height="150px"
+            style={{
+              borderRadius: "100%",
+            }}
+          />
+          <p>
+            <b>Nathalia Bruno</b>
+          </p>
+          <Text>{intl.formatMessage({ id: "nathFeedback" })}</Text>
+        </div>
+      )
+    }
+
+    return (
+      <div className="fade-in">
+        <StaticImage
+          src="../images/fuji.jpg"
+          alt="Imagem do autor do feedback"
+          width="150px"
+          height="150px"
+          style={{
+            borderRadius: "100%",
+          }}
+        />
+        <p>
+          <b>Rodrigo Fujioka</b>
+        </p>
+        <Text>{intl.formatMessage({ id: "fujiokaFeedback" })}</Text>
+      </div>
+    )
+  }
+
   return (
     <Container>
       <DivRow>
-        {List.map((list, index) => (
-          <Fade key={index}>
-            <SocialProofContainer>
-              {marked === index ? (
-                <div className="fade-in">
-                  <SocialProofAvatar src={list.profile} alt="Imagem do autor do feedback" />
-                  <p>
-                    <b>{list.name}</b>
-                  </p>
-                  <Text>{intl.formatMessage({ id: list.text })}</Text>
-                </div>
-              ) : null}
-            </SocialProofContainer>
-          </Fade>
-        ))}
+        <Fade>
+          <SocialProofContainer>{renderImage()}</SocialProofContainer>
+        </Fade>
       </DivRow>
       <DivRow>
         {List.map((list, index) => (

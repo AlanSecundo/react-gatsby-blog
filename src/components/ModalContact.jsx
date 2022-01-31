@@ -1,12 +1,11 @@
 import React from "react"
-import curriculumIcon from "../assets/curriculum.svg"
+// import curriculumIcon from "../assets/curriculum.svg"
 import email from "../assets/email.svg"
 import whatsapp from "../assets/whatsapp.svg"
 // import videoIcon from "../assets/video.svg"
 import Modal from "./Modal"
 import styled, { css } from "styled-components"
 import { useIntl } from "gatsby-plugin-intl"
-
 
 const FlexCenter = css`
   display: flex;
@@ -53,10 +52,10 @@ const SvgIcon = css`
   margin: 5px;
 `
 
-const LargeIcons = css`
-  width: 80px;
-  height: 80px;
-`
+// const LargeIcons = css`
+//   width: 80px;
+//   height: 80px;
+// `
 
 const EmailIcon = styled(email)`
   ${SvgIcon}
@@ -66,20 +65,19 @@ const WhatsappIcon = styled(whatsapp)`
   ${SvgIcon}
 `
 
-const CurriculumIcon = styled(curriculumIcon)`
-  ${LargeIcons}
-`
+// const CurriculumIcon = styled(curriculumIcon)`
+//   ${LargeIcons}
+// `
 
 // const VideoIcon = styled(videoIcon)`
 //   ${LargeIcons}
 // `
 
 export default function ModalContact(props) {
-
   const intl = useIntl()
 
   function changeModalState() {
-    props.closeModal();    
+    props.closeModal()
   }
 
   return (
@@ -108,8 +106,8 @@ export default function ModalContact(props) {
           <span>{intl.formatMessage({ id: "videoPresentation" })}</span>
         </DivColumnCenter> */}
         <DivColumnCenter>
-          <CurriculumIcon />
-          <span>{intl.formatMessage({ id: "curriculumPDF" })}</span>
+          {/* <CurriculumIcon />
+          <span>{intl.formatMessage({ id: "curriculumPDF" })}</span> */}
         </DivColumnCenter>
       </Row>
     </Modal>
