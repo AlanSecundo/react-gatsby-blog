@@ -18,6 +18,7 @@ module.exports = {
     `gatsby-plugin-modal-routing`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-image`,
+    `@babel/plugin-transform-react-jsx`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
