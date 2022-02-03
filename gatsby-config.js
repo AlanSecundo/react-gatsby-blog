@@ -11,13 +11,13 @@ module.exports = {
       "Um blog sobre tecnologias de Desenvolvimento Front-end e Engenharia de software. Scrum, React, Gatsby e muito mais.",
   },
   plugins: [
-    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-layout`,
     `gatsby-plugin-modal-routing`,
     `gatsby-transformer-remark`,
-    `gatsby-plugin-image`,
     `@babel/plugin-transform-react-jsx`,
     {
       resolve: `gatsby-transformer-remark`,
